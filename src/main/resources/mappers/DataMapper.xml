@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.soccerstat.dao.DataDAO">
+	<select id="getSchedule" resultType="kr.green.soccerstat.vo.ScheduleVO">
+	    select * from schedule where status = 'N' order by date limit 10
+	</select>
+	<select id="getTable" resultType="kr.green.soccerstat.vo.TeamTableVO">
+	    select * from teamtable where season = #{currentSeason} and <![CDATA[ ranked < 6 ]]>
+	</select>
+	<select id="getSchedule1" resultType="kr.green.soccerstat.vo.ScheduleVO">
+	    select date,time,status,league,home,score,away,homeG,awayG from schedule where year = #{year} and date = #{cDate}
+	</select>
+	<select id="getAllLeague" resultType="kr.green.soccerstat.vo.ScheduleVO">
+	    select * from schedule where league = #{league} and status = 'N' order by date limit 10
+	</select>
+	<select id="getLeagueTable" resultType="kr.green.soccerstat.vo.TeamTableVO">
+	    select * from teamtable where season = #{currentSeason} and league = #{league}
+	</select>
+	<select id="getPlayerStat" resultType="kr.green.soccerstat.vo.PlayerVO">
+	    select * from playerstat
+	    join playerinfo on playerstat.player = playerinfo.player
+		where season = #{currentSeason} and league = #{league}
+	</select>
+	<select id="getSortLeague" resultType="kr.green.soccerstat.vo.TeamTableVO">
+	    select * from teamtable where season = #{currentSeason} and league = #{league} order by ${sortData} desc, points desc
+	</select>
+	<select id="getSortPlayer" resultType="kr.green.soccerstat.vo.PlayerVO">
+	    select * from playerstat 
+	    join playerinfo on playerstat.player = playerinfo.player
+	    where season = #{currentSeason} and league = #{league} order by ${sortP} desc
+	</select>
+	<select id="getTeamInfo" resultType="kr.green.soccerstat.vo.TeamInfoVO">
+	    select * from teaminfo where team = #{team}
+	</select>
+	<select id="getTeamStat" resultType="kr.green.soccerstat.vo.TeamTableVO">
+	    select * from teamtable where season = #{currentSeason} and team = #{team}
+	</select>
+	<select id="getSquad" resultType="kr.green.soccerstat.vo.PlayerVO">
+	    select * from playerstat where season = #{currentSeason} and team = #{team}
+	</select>
+	<select id="getSortStat" resultType="kr.green.soccerstat.vo.PlayerVO">
+	    select * from playerstat where season = #{currentSeason} and team = #{team}
+	</select>
+	<select id="getPlayerInfo" resultType="kr.green.soccerstat.vo.PlayerVO">
+	    select * from playerinfo where player = #{player}
+	</select>
+	<select id="getNowStat" resultType="kr.green.soccerstat.vo.PlayerVO">
+	    select * from playerstat 
+	    join playerinfo on playerstat.player = playerinfo.player
+	    where season = #{currentSeason} and player = #{player}
+	</select>
+</mapper>

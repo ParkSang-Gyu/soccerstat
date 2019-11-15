@@ -1,0 +1,46 @@
+@charset "EUC-KR";
+.con-top{
+	padding: 20px 0;
+}
+.allschedule{
+	position: absolute;
+}
+.calendar{
+	margin-bottom: 20px;
+	float: right;
+}
+.fix{
+	margin-bottom: 10px;
+}
+.con-btm-left,.con-btm-mid,.con-btm-right{
+	width: calc(999px / 3);
+	display: inline-block;
+	margin-bottom: 50px;
+}
+.con-btm-left,.con-btm-mid{
+	margin-right: 51px;
+}
+.premier,.laliga,.bundes{
+	margin-bottom: 30px;
+}
+table{
+	text-align: center;
+	font-size: 10px;
+}
+.borderbtm{
+	border-bottom: 1px solid #dee2e6;
+}
+.dis-none{
+	display: none;
+}
+.f-right{
+	float: right;
+	color: black;
+}
+a{
+	color: black;
+}
+a:hover{
+	color: black;
+	text-decoration: none;
+}

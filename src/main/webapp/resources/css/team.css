@@ -1,0 +1,55 @@
+@charset "EUC-KR";
+h3{
+	margin: 15px 0;
+}
+.info{
+	position: relative;
+	margin: 25px 0;
+}
+.info-left{
+	position: absolute;
+	text-align: center;
+	line-height: 0;
+}
+.info-left,.info-right{
+	display: inline-block;
+}
+.info-right{
+	position: relative;
+	margin-left: 85px;
+	line-height: 25px;
+}
+.info-right>div{
+	display: inline-block;
+}
+.info1{
+	width: 150px;
+}
+.info2{
+	width: 200px;
+}
+.info1 div{
+	font-size: 15px;
+	font-weight: bold;
+}
+.info div{
+	font-size: 15px;
+}
+table{
+	text-align: center;
+	font-size: 10px;
+}
+a{
+	color: black;
+}
+a:hover{
+	color: black;
+	text-decoration: none;
+}
+.squad button{
+	color: black;
+	background-color: white;
+	border: none;
+	font-weight: bold;
+	outline: none;
+}

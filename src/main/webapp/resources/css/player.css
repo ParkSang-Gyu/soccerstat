@@ -1,0 +1,37 @@
+@charset "EUC-KR";
+h3{
+	margin: 15px 0;
+}
+.info{
+	position: relative;
+	margin: 25px 0;
+}
+.info-left{
+	position: absolute;
+	text-align: center;
+	line-height: 0;
+}
+.info-left,.info-right{
+	display: inline-block;
+}
+.info-right{
+	position: relative;
+	margin-left: 120px;
+	line-height: 31px;
+}
+.info-right>div{
+	display: inline-block;
+}
+.info1{
+	width: 150px;
+}
+.info2{
+	width: 200px;
+}
+.info1 div{
+	font-size: 15px;
+	font-weight: bold;
+}
+.info div{
+	font-size: 15px;
+}

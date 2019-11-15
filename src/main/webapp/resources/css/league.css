@@ -1,0 +1,44 @@
+@charset "EUC-KR";
+.top{
+	padding: 20px 0;
+}
+.schedule{
+	position: absolute;
+}
+.calendar{
+	margin-bottom: 20px;
+	float: right;
+}
+.leagueTable th:nth-child(1){
+	vertical-align: middle;
+}
+.leagueTable th:nth-child(2){
+	vertical-align: middle;
+}
+.standing th:nth-child(1){
+	vertical-align: middle;
+}
+.standing th:nth-child(2){
+	vertical-align: middle;
+}
+.standing th:nth-child(3){
+	vertical-align: middle;
+}
+table{
+	text-align: center;
+	font-size: 10px;
+}
+a{
+	color: black;
+}
+a:hover{
+	color: black;
+	text-decoration: none;
+}
+.standing button,.leagueTable button{
+	color: black;
+	background-color: white;
+	border: none;
+	font-weight: bold;
+	outline: none;
+}
