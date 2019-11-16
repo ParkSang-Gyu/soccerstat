@@ -19,17 +19,13 @@
 	    select * from teamtable where season = #{currentSeason} and league = #{league}
 	</select>
 	<select id="getPlayerStat" resultType="kr.green.soccerstat.vo.PlayerVO">
-	    select * from playerstat
-	    join playerinfo on playerstat.player = playerinfo.player
-		where season = #{currentSeason} and league = #{league}
+	    select * from playerstat where season = #{currentSeason} and league = #{league}
 	</select>
 	<select id="getSortLeague" resultType="kr.green.soccerstat.vo.TeamTableVO">
 	    select * from teamtable where season = #{currentSeason} and league = #{league} order by ${sortData} desc, points desc
 	</select>
 	<select id="getSortPlayer" resultType="kr.green.soccerstat.vo.PlayerVO">
-	    select * from playerstat 
-	    join playerinfo on playerstat.player = playerinfo.player
-	    where season = #{currentSeason} and league = #{league} order by ${sortP} desc
+	    select * from playerstat where season = #{currentSeason} and league = #{league} order by ${sortP} desc
 	</select>
 	<select id="getTeamInfo" resultType="kr.green.soccerstat.vo.TeamInfoVO">
 	    select * from teaminfo where team = #{team}
@@ -47,8 +43,24 @@
 	    select * from playerinfo where player = #{player}
 	</select>
 	<select id="getNowStat" resultType="kr.green.soccerstat.vo.PlayerVO">
-	    select * from playerstat 
-	    join playerinfo on playerstat.player = playerinfo.player
-	    where season = #{currentSeason} and player = #{player}
+	    select * from playerstat where season = #{currentSeason} and player = #{player}
+	</select>
+	<select id="getTotalStat" resultType="kr.green.soccerstat.vo.PlayerVO">
+	    select * from playerstat where player = #{player}
+	</select>
+	<select id="getSum" resultType="kr.green.soccerstat.vo.PlayerVO">
+	    select * from playerstat where player = #{player}
+	</select>
+	<select id="getSeasonList" resultType="String">
+	    select season from teamtable where league = #{league}
+	</select>
+	<select id="getTeamList" resultType="String">
+	    select team from teamtable where season = #{season} and league = #{league}
+	</select>
+	<select id="getPlayerList" resultType="String">
+	    select player from playerinfo where team = #{team}
+	</select>
+	<select id="getCompareStat" resultType="kr.green.soccerstat.vo.PlayerVO">
+	    select * from playerstat where player = #{playerName}
 	</select>
 </mapper>

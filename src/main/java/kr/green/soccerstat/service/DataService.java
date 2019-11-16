@@ -37,4 +37,16 @@ public interface DataService {
 
 	PlayerVO getNowStat(String player, String currentSeason);
 
+	ArrayList<PlayerVO> getTotalStat(PlayerVO pVo, String player);
+
+	ArrayList<PlayerVO> getSum(PlayerVO pVo, String player);
+
+	ArrayList<String> getSeasonList(String league);
+
+	ArrayList<String> getTeamList(String season, String league);
+
+	ArrayList<String> getPlayerList(String team, String season, String league);
+
+	PlayerVO getCompareStat(String playerName);
+
 }

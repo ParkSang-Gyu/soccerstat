@@ -4,6 +4,7 @@ public class PlayerVO {
 
 	private int playerNo;
 	private String player;
+	private String league;
 	private String season;
 	private int age;
 	private String nationality;
@@ -43,8 +44,8 @@ public class PlayerVO {
 	private int yc;
 	private int rc;
 	private String team;
-	private String league;
 	private double pass;
+	
 	public int getPlayerNo() {
 		return playerNo;
 	}
@@ -56,6 +57,12 @@ public class PlayerVO {
 	}
 	public void setPlayer(String player) {
 		this.player = player;
+	}
+	public String getLeague() {
+		return league;
+	}
+	public void setLeague(String league) {
+		this.league = league;
 	}
 	public String getSeason() {
 		return season;
@@ -291,12 +298,6 @@ public class PlayerVO {
 	public void setTeam(String team) {
 		this.team = team;
 	}
-	public String getLeague() {
-		return league;
-	}
-	public void setLeague(String league) {
-		this.league = league;
-	}
 	public double getPass() {
 		return pass;
 	}
@@ -305,18 +306,19 @@ public class PlayerVO {
 	}
 	@Override
 	public String toString() {
-		return "PlayerVO [playerNo=" + playerNo + ", player=" + player + ", season=" + season + ", age=" + age
-				+ ", nationality=" + nationality + ", position=" + position + ", backNo=" + backNo + ", height="
-				+ height + ", weight=" + weight + ", goal=" + goal + ", assist=" + assist + ", dribbleApt=" + dribbleApt
-				+ ", dribbleScc=" + dribbleScc + ", passApt=" + passApt + ", passScc=" + passScc + ", motm=" + motm
-				+ ", offside=" + offside + ", fouled=" + fouled + ", rating=" + rating + ", tackleApt=" + tackleApt
-				+ ", tackleScc=" + tackleScc + ", aerialApt=" + aerialApt + ", aerialScc=" + aerialScc + ", intercept="
-				+ intercept + ", block=" + block + ", clearance=" + clearance + ", goalA=" + goalA + ", save=" + save
-				+ ", cleansheet=" + cleansheet + ", keyPass=" + keyPass + ", touches=" + touches + ", played=" + played
-				+ ", appearance=" + appearance + ", pkApt=" + pkApt + ", pkScc=" + pkScc + ", pk=" + pk + ", shootApt="
-				+ shootApt + ", shootOT=" + shootOT + ", yc=" + yc + ", rc=" + rc + ", team=" + team + ", league="
-				+ league + ", pass=" + pass + "]";
+		return "PlayerVO [playerNo=" + playerNo + ", player=" + player + ", league=" + league + ", season=" + season
+				+ ", age=" + age + ", nationality=" + nationality + ", position=" + position + ", backNo=" + backNo
+				+ ", height=" + height + ", weight=" + weight + ", goal=" + goal + ", assist=" + assist
+				+ ", dribbleApt=" + dribbleApt + ", dribbleScc=" + dribbleScc + ", passApt=" + passApt + ", passScc="
+				+ passScc + ", motm=" + motm + ", offside=" + offside + ", fouled=" + fouled + ", rating=" + rating
+				+ ", tackleApt=" + tackleApt + ", tackleScc=" + tackleScc + ", aerialApt=" + aerialApt + ", aerialScc="
+				+ aerialScc + ", intercept=" + intercept + ", block=" + block + ", clearance=" + clearance + ", goalA="
+				+ goalA + ", save=" + save + ", cleansheet=" + cleansheet + ", keyPass=" + keyPass + ", touches="
+				+ touches + ", played=" + played + ", appearance=" + appearance + ", pkApt=" + pkApt + ", pkScc="
+				+ pkScc + ", pk=" + pk + ", shootApt=" + shootApt + ", shootOT=" + shootOT + ", yc=" + yc + ", rc=" + rc
+				+ ", team=" + team + ", pass=" + pass + "]";
 	}
+	
 	
 	
 }

@@ -39,4 +39,17 @@ public interface DataDAO {
 
 	PlayerVO getNowStat(@Param("player")String player, @Param("currentSeason")String currentSeason);
 
+	ArrayList<PlayerVO> getTotalStat(@Param("pVo")PlayerVO pVo, @Param("player")String player);
+
+	ArrayList<PlayerVO> getSum(@Param("pVo")PlayerVO pVo, @Param("player")String player);
+
+	ArrayList<String> getSeasonList(String league);
+  
+	ArrayList<String> getTeamList(@Param("season")String season, @Param("league")String league);
+  
+	ArrayList<String> getPlayerList(@Param("team")String team, @Param("season")String season, @Param("league")String league);
+  
+	PlayerVO getCompareStat(String playerName);
+	 
+
 }

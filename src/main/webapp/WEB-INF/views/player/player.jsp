@@ -10,6 +10,7 @@
 <title>선수</title>
 </head>
 <body>
+	<input type="hidden" value="${player}">
 	<div class="info">
 		<div class="info-left">
 			<img alt="X" src="${pageContext.request.contextPath}/resources/img/player/${player}.jpg">
@@ -41,6 +42,7 @@
 			</div>
 		</div>
 	</div>
+	<h3>현재</h3>
 	<div class="now">
 		<table class="table table-striped">
 	      	<thead>
@@ -74,7 +76,7 @@
 		      	</tr>
 	      	</tbody>	    
   		</table>
-  		<table>
+  		<table class="table table-striped">
   			<thead>
   				<tr>
   					<th>슈팅</th>
@@ -106,7 +108,7 @@
   				</tr>
   			</tbody>
   		</table>
-  		<table>
+  		<table class="table table-striped">
   			<thead>
   				<tr>
   					<th>태클 시도</th>
@@ -141,30 +143,69 @@
   			</tbody>
   		</table>
 	</div>
+	<h3>통산</h3>
 	<div class="total">
 		<table class="table table-striped">
 	      	<thead>
 		      	<tr>
-		      		<th>순위</th>
-		      		<th>승</th>
-		      		<th>무</th>
-		      		<th>패</th>
+		      		<th>리그</th>
+		      		<th>시즌</th>
+		      		<th>출장수</th>
+		      		<th>출전시간</th>
 		      		<th>득점</th>
-		      		<th>실점</th>
-		      		<th>득실차</th>
-		      		<th>승점</th>
+		      		<th>도움</th>
+		      		<th>키패스</th>
+		      		<th>경고</th>
+		      		<th>퇴장</th>
+		      		<th>motm</th>
+		      		<th>평점</th>
 		      	</tr>
 	      	</thead>
 	      	<tbody>
+	      		<c:forEach var="tmp" items="${totalStat}">
+			      	<tr>
+		        		<td>${tmp.league}</td>
+		        		<td>${tmp.season}</td>
+		        		<td>${tmp.appearance}</td>
+		        		<td>${tmp.played}</td>
+		        		<td>${tmp.goal}</td>
+		        		<td>${tmp.assist}</td>
+		        		<td>${tmp.keyPass}</td>
+		        		<td>${tmp.yc}</td>
+		        		<td>${tmp.rc}</td>
+		        		<td>${tmp.motm}</td>
+		        		<td>${tmp.rating}</td>
+			      	</tr>
+		      	</c:forEach>
+	      	</tbody>	    
+  		</table>
+  		<table class="table table-striped">
+	      	<thead>
 		      	<tr>
-	        		<td>${teamStat.ranked}</td>
-	        		<td>${teamStat.win}</td>
-	        		<td>${teamStat.draw}</td>
-	        		<td>${teamStat.lose}</td>
-	        		<td>${teamStat.goalF}</td>
-	        		<td>${teamStat.goalA}</td>
-	        		<td>${teamStat.goalD}</td>
-	        		<td>${teamStat.points}</td>
+		      		<th class="sum">합계</th>
+		      		<th>출장수</th>
+		      		<th>출전시간</th>
+		      		<th>득점</th>
+		      		<th>도움</th>
+		      		<th>키패스</th>
+		      		<th>경고</th>
+		      		<th>퇴장</th>
+		      		<th>motm</th>
+		      		<th>평점</th>
+		      	</tr>
+	      	</thead>
+	      	<tbody>
+		      	<tr class="t">
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
 		      	</tr>
 	      	</tbody>	    
   		</table>

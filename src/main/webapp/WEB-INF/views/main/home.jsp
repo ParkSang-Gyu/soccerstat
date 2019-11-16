@@ -70,7 +70,7 @@
     <div class="con-bottom">
     	<div class="fix"><h3>순위</h3></div>
     	<div class="con-btm-left">
-    		<div>
+    		<div class="imgBox">
     			<img alt="X" src="" name="england">
     			<span>프리미어리그 순위</span>
     			<a class="f-right" href="<%=request.getContextPath()%>/league?league=프리미어리그">더보기</a>
@@ -97,7 +97,7 @@
 				    </tbody>
 				</table>
     		</div>
-    		<div>
+    		<div class="imgBox">
     			<img alt="X" src="" name="italia">
     			<span>세리에A 순위</span>
     			<a class="f-right" href="<%=request.getContextPath()%>/league?league=세리에A">더보기</a>
@@ -126,7 +126,7 @@
     		</div>
     	</div>
     	<div class="con-btm-mid">
-    		<div>
+    		<div class="imgBox">
     			<img alt="X" src="" name="spain">
     			<span>라리가 순위</span>
     			<a class="f-right" href="<%=request.getContextPath()%>/league?league=라리가">더보기</a>
@@ -153,7 +153,7 @@
 				    </tbody>
 				</table>
     		</div>
-    		<div>
+    		<div class="imgBox">
     			<img alt="X" src="" name="france">
     			<span>리그1 순위</span>
     			<a class="f-right" href="<%=request.getContextPath()%>/league?league=리그1">더보기</a>
@@ -182,7 +182,7 @@
     		</div>
     	</div>
     	<div class="con-btm-right">
-    		<div>
+    		<div class="imgBox">
     			<img alt="X" src="" name="germany">
     			<span>분데스리가 순위</span>
     			<a class="f-right" href="<%=request.getContextPath()%>/league?league=분데스리가">더보기</a>
@@ -209,7 +209,7 @@
 				    </tbody>
 				</table>
     		</div>
-    		<div>
+    		<div class="imgBox">
     			<img alt="X" src="" name="netherland">
     			<span>에레디비지에 순위</span>
     			<a class="f-right" href="<%=request.getContextPath()%>/league?league=에레디비지에">더보기</a>

@@ -102,4 +102,40 @@ public class DataServiceImp implements DataService{
 		return dataDao.getNowStat(player,currentSeason);
 	}
 
+	@Override
+	public ArrayList<PlayerVO> getTotalStat(PlayerVO pVo, String player) {
+		
+		return dataDao.getTotalStat(pVo,player);
+	}
+
+	@Override
+	public ArrayList<PlayerVO> getSum(PlayerVO pVo, String player) {
+		
+		return dataDao.getSum(pVo,player);
+	}
+
+	@Override
+	public ArrayList<String> getSeasonList(String league) {
+		
+		return dataDao.getSeasonList(league);
+	}
+
+	@Override
+	public ArrayList<String> getTeamList(String season, String league) {
+		
+		return dataDao.getTeamList(season,league);
+	}
+
+	@Override
+	public ArrayList<String> getPlayerList(String team, String season, String league) {
+		
+		return dataDao.getPlayerList(team,season,league);
+	}
+
+	@Override
+	public PlayerVO getCompareStat(String playerName) {
+		
+		return dataDao.getCompareStat(playerName);
+	}
+
 }

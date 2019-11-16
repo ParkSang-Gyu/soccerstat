@@ -1,5 +1,7 @@
 package kr.green.soccerstat;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -109,7 +111,6 @@ public class HomeController {
 		
 		map.put("league", league);
 		map.put("sortP", sortP);
-		System.out.println(sortP);
 		
 		ArrayList<PlayerVO> sortPlayer = dataService.getSortPlayer(pVo, currentSeason, league, sortP);
 		
@@ -168,14 +169,74 @@ public class HomeController {
 		
 		PlayerVO playerInfo = dataService.getPlayerInfo(player);
 		PlayerVO nowStat = dataService.getNowStat(player,currentSeason);
-		//ArrayList<PlayerVO> squad = dataService.getSquad(pVo,team,currentSeason);
+		ArrayList<PlayerVO> totalStat = dataService.getTotalStat(pVo,player);
 		
 		mv.addObject("playerInfo", playerInfo);
 		mv.addObject("nowStat", nowStat);
-		//mv.addObject("squad", squad);
+		mv.addObject("totalStat", totalStat);
 		mv.setViewName("/player/player");
 		
 	    return mv;
+	}
+	
+	@RequestMapping(value = {"/player"}, method = RequestMethod.POST)
+	@ResponseBody
+	public Map<Object, Object> playerPost(PlayerVO pVo, String player){
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		
+		map.put("player", player);
+		
+		ArrayList<PlayerVO> sum = dataService.getSum(pVo,player);
+		
+		map.put("sum", sum);
+		
+		return map;
+	}
+	
+	@RequestMapping(value= {"/comparison"}, method = RequestMethod.GET)
+	public ModelAndView comparisonGet(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("/comparison/comparison");
+		
+	    return mv;
+	}
+	
+	@RequestMapping(value = "/comparison", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<Object, Object> comparisonPost(String league, String season, String team, String playerName) {
+		
+		Map<Object, Object> map = new HashMap<Object, Object>();
+
+		try {
+			if(team!=null)
+			team = URLDecoder.decode(team, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try { 
+			if(playerName!=null)
+			playerName = URLDecoder.decode(playerName, "UTF-8"); ; 
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace(); 
+		}
+					 
+		map.put("league", league);
+		map.put("season", season);
+		map.put("team", team);
+		map.put("playerName", playerName);
+		
+		ArrayList<String> seasonList = dataService.getSeasonList(league);
+		ArrayList<String> teamList = dataService.getTeamList(season,league);
+		ArrayList<String> playerList = dataService.getPlayerList(team,season,league);
+		PlayerVO compareStat = dataService.getCompareStat(playerName);
+		
+		map.put("seasonList", seasonList);
+		map.put("teamList", teamList);
+		map.put("playerList", playerList);
+		map.put("compareStat", compareStat);
+		
+		return map;
 	}
 	
 	@RequestMapping(value= {"/privacy"})

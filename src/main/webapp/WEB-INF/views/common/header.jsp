@@ -118,7 +118,7 @@ $(document).ready(function () {
 			      		<a href="#">스탯</a>
 			    	</li>
 			    	<li class="comparison">
-			      		<a href="#">비교</a>
+			      		<a href="<%=request.getContextPath()%>/comparison">비교</a>
 			    	</li>
 			    	<li class="board">
 			      		<a href="<%=request.getContextPath()%>/list">게시판</a>
