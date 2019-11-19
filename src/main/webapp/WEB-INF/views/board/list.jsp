@@ -6,79 +6,37 @@
 <html>
 <head>
 <title>축구 게시판</title>
-<style type="text/css">
-.top{
-	height: 30px;
-	margin-top: 10px;
-}
-.title{
-	position: absolute;
-	font-size: 20px;
-	text-align: center;
-}
-.write{
-	float: right;
-	margin-bottom: 12px;
-}
-button{
-	padding: 5px;
-	border: 0;
-	outline: o;
-}
-.middle{
-	margin: 10px 0;
-}
-.pagination{
-	margin-top: 80px;
-	justify-content: center;
-}
-.page-link{
-	border-style: none;
-	color: black;
-	margin-top: 45px;
-}
-.search{
-	text-align: center;
-	margin-bottom: 20px;
-}
-.search-sel,.search-inp{
-	height: 34px;
-}
-.search-inp{
-	width: 300px;
-}
-a{
-	color: white;
-	float: right;
-}
-</style>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/list.css">
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/list.js"></script>
 </head>
 <body>
 	<div class="top">
-		<div class="title">축구 게시판</div>
+		<div>축구 게시판</div>
 		<a href="<%=request.getContextPath()%>/register"><button>글쓰기</button></a>
 	</div>
 	<div class="middle">
-		<form action="">
-			<table class="table table-hover">
+		<table class="table table-hover">
+			<thead>
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
 					<th>필명</th>
 					<th>작성일</th>
 					<th>조회수</th>
-					<th>추천</th>
 				</tr>
-				<tr>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-				</tr>
-			</table>
-		</form>
+			</thead>
+			<tbody>
+				<c:forEach var="tmp" items="${list}">
+					<tr>
+						<td>${tmp.listNo}</td>
+						<td>${tmp.title}</td>
+						<td>${tmp.penName}</td>
+						<td>${tmp.day}</td>
+						<td>${tmp.count}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 		<a href="<%=request.getContextPath()%>/register"><button>글쓰기</button></a>
 	</div>
 	<ul class="pagination">

@@ -47,6 +47,6 @@ public interface DataService {
 
 	ArrayList<String> getPlayerList(String team, String season, String league);
 
-	PlayerVO getCompareStat(String playerName);
+	ArrayList<PlayerVO> getCompareStat(PlayerVO pVo, String season, String playerName);
 
 }

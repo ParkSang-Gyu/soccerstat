@@ -24,6 +24,7 @@ button{
 	border: 1px solid;
 	color: white;
 	padding: 5px;
+	outline: none;
 }
 .white{
 	color: white;

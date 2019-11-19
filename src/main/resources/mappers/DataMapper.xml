@@ -52,7 +52,7 @@
 	    select * from playerstat where player = #{player}
 	</select>
 	<select id="getSeasonList" resultType="String">
-	    select season from teamtable where league = #{league}
+	    select season from league where league = #{league}
 	</select>
 	<select id="getTeamList" resultType="String">
 	    select team from teamtable where season = #{season} and league = #{league}
@@ -61,6 +61,8 @@
 	    select player from playerinfo where team = #{team}
 	</select>
 	<select id="getCompareStat" resultType="kr.green.soccerstat.vo.PlayerVO">
-	    select * from playerstat where player = #{playerName}
+	    select * from playerstat 
+	    join playerinfo on playerstat.player = playerinfo.player
+	    where season = #{season} and playerinfo.player = #{playerName}
 	</select>
 </mapper>

@@ -49,7 +49,7 @@ public interface DataDAO {
   
 	ArrayList<String> getPlayerList(@Param("team")String team, @Param("season")String season, @Param("league")String league);
   
-	PlayerVO getCompareStat(String playerName);
+	ArrayList<PlayerVO> getCompareStat(@Param("pVo")PlayerVO pVo, @Param("season")String season, @Param("playerName")String playerName);
 	 
 
 }

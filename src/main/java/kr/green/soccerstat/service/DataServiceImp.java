@@ -133,9 +133,9 @@ public class DataServiceImp implements DataService{
 	}
 
 	@Override
-	public PlayerVO getCompareStat(String playerName) {
+	public ArrayList<PlayerVO> getCompareStat(PlayerVO pVo, String season, String playerName) {
 		
-		return dataDao.getCompareStat(playerName);
+		return dataDao.getCompareStat(pVo,season,playerName);
 	}
 
 }

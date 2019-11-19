@@ -28,9 +28,40 @@ public class MemberController {
 	@RequestMapping(value= {"/login"},method = RequestMethod.GET)
 	public ModelAndView listGet(ModelAndView mv) throws Exception{
 	    
-	    mv.setViewName("/main/login");
+	    mv.setViewName("/member/login");
 	    
 	    return mv;
 	}
 	
+	@RequestMapping(value= {"/searchId"},method = RequestMethod.GET)
+	public ModelAndView searchIdGet(ModelAndView mv) throws Exception{
+	    
+	    mv.setViewName("/member/searchId");
+	    
+	    return mv;
+	}
+	
+	@RequestMapping(value= {"/searchPw"},method = RequestMethod.GET)
+	public ModelAndView searchPwGet(ModelAndView mv) throws Exception{
+	    
+	    mv.setViewName("/member/searchPw");
+	    
+	    return mv;
+	}
+	
+	@RequestMapping(value= {"/signin"},method = RequestMethod.GET)
+	public ModelAndView signinGet(ModelAndView mv) throws Exception{
+	    
+	    mv.setViewName("/member/signin");
+	    
+	    return mv;
+	}
+	
+	@RequestMapping(value= {"/modify"},method = RequestMethod.GET)
+	public ModelAndView modifyGet(ModelAndView mv) throws Exception{
+	    
+	    mv.setViewName("/member/modify");
+	    
+	    return mv;
+	}
 }

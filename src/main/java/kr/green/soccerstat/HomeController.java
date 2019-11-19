@@ -1,7 +1,5 @@
 package kr.green.soccerstat;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -203,23 +201,9 @@ public class HomeController {
 	
 	@RequestMapping(value = "/comparison", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<Object, Object> comparisonPost(String league, String season, String team, String playerName) {
+	public Map<Object, Object> comparisonPost(PlayerVO pVo, String league, String season, String team, String playerName) {
 		
 		Map<Object, Object> map = new HashMap<Object, Object>();
-
-		try {
-			if(team!=null)
-			team = URLDecoder.decode(team, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try { 
-			if(playerName!=null)
-			playerName = URLDecoder.decode(playerName, "UTF-8"); ; 
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace(); 
-		}
 					 
 		map.put("league", league);
 		map.put("season", season);
@@ -229,7 +213,7 @@ public class HomeController {
 		ArrayList<String> seasonList = dataService.getSeasonList(league);
 		ArrayList<String> teamList = dataService.getTeamList(season,league);
 		ArrayList<String> playerList = dataService.getPlayerList(team,season,league);
-		PlayerVO compareStat = dataService.getCompareStat(playerName);
+		ArrayList<PlayerVO> compareStat = dataService.getCompareStat(pVo,season,playerName);
 		
 		map.put("seasonList", seasonList);
 		map.put("teamList", teamList);

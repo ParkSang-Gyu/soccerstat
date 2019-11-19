@@ -1,22 +1,10 @@
 @charset "EUC-KR";
-#roundNum{
-	float: right;
-}
-#round{
-	display: inline-block;
-	float: right;
-}
-.select{
+.top{
 	width: 1140px;
 	height: 180px;
 	background-color: #F1F0EE;
 	position: relative;
 	margin: 0 0 20px;
-	padding: 0;
-}
-.selectContainer{
-	height: 170px;
-	margin: 0;
 	padding: 0;
 }
 .comparison1{
@@ -26,21 +14,6 @@
 	float: left;
 	margin: 0;
 	padding: 0;
-}
-.closeComparison{
-	width: 100%;
-}
-.closeComparison .close{
-	padding-right: 5px;
-}
-.comparisonSelect1,.comparisonSelect2,.comparisonSelect3,.comparisonSelect4{
-	    margin: 24px 7px 15px 7px;
-	    padding: 0;
-}
-select{
-	width: 100%;
-	font-weight: bold;
-    border: 2px solid #F1F0EE;
 }
 .plus-btn{
 	width: 60px;
@@ -62,7 +35,22 @@ select{
 	float: left;
 	position: absolute;
 }
-.view{
+.comparisonSelect1,.comparisonSelect2,.comparisonSelect3,.comparisonSelect4{
+	    margin: 24px 7px 15px 7px;
+	    padding: 0;
+}
+.closeComparison{
+	width: 100%;
+}
+.closeComparison .close{
+	padding-right: 5px;
+}
+select{
+	width: 100%;
+	font-weight: bold;
+    border: 2px solid #F1F0EE;
+}
+.bottom{
 	width: 1140px;
 	height: 600px;
 	margin: 0;
@@ -115,6 +103,30 @@ i{
 .player-info-bottom{
 	background-color: #F1F1F1;
 }
+.player-info-left{
+	width: 120px;
+	height: 150px;
+    display: inline-block;
+    vertical-align: top;
+}
+.p-img{
+	margin: 10px;
+	width: 100px;
+	height: 130px;
+}
+.player-info-right{
+	width: 124px;
+    display: inline-block;
+    vertical-align: top;
+}
+.t-img{
+	margin: 10px;
+	margin-bottom: 0;
+	border: 1px solid #F1F1F1;
+}
+.player-info-right div{
+	text-align: center;
+}
 .player-stat{
 	display: inline-block;
     text-align: center;
@@ -128,39 +140,6 @@ i{
 }
 .player-stat-box div{
 	border-bottom: 1px solid #F1F1F1;
-}
-.player-info-top{
-	text-align: center;
-    background-color: #DAD8DA;
-    border-radius: 10px 10px 0 0;
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-.player-info-bottom{
-	background-color: #F1F1F1;
-}
-.player-info-left{
-	width: 120px;
-	height: 150px;
-    display: inline-block;
-    vertical-align: top;
-}
-.player-info-left img{
-	width: 120px;
-	height: 150px;
-}
-.player-info-right{
-	width: 124px;
-    display: inline-block;
-    vertical-align: top;
-}
-.player-info-teamimage img{
-	width: 124px;
-	height: auto;
-	border: 1px solid #F1F1F1;
-}
-.player-info-right div{
-	text-align: center;
 }
 .stat-explanation{
 	width: 1140px;
@@ -177,4 +156,8 @@ i{
 }
 .display-none{
 	display: none;
+}
+button{
+	background-color: #343a40;
+	border: 0;
 }
