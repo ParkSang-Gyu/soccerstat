@@ -6,90 +6,8 @@
 <html>
 <head>
 <title>상세 페이지</title>
-<style type="text/css">
-.top{
-	position: relative;
-	height: 40px;
-	margin: 20px 0;
-}
-.soccerBoard{
-	position: absolute;
-	font-size: 20px;
-	text-align: center;
-	line-height: 35px;
-}
-.top a{
-	margin-top: 15px;
-}
-.middle{
-	border: 1px solid #343a40;
-}
-.mid-top{
-	margin: 10 10 0 10px;
-}
-.title{
-	font-size: 20px;
-	border-bottom: 1px solid #343a40;
-	padding-bottom: 5px;
-}
-.info{
-	border-bottom: 1px solid #343a40;
-	margin-top: 5px;
-}
-.userinfo{
-	list-style: none;
-	margin-bottom: 5px;
-}
-.mid-center{
-	margin: 10 10 0 10px;
-}
-.recommend{
-	margin: 10 522 10px;
-}
-.mid-bottom{
-	height: 46px;
-}
-.mid-bottom a{
-	margin-top: 10px;
-}
-.bottom{
-	border: 1px solid #343a40;
-	margin: 10 0 15px;;
-}
-.comment{
-	margin: 10 10 0 10px;
-	padding-bottom: 10px;
-	border-bottom: 1px solid #343a40;
-}
-.comment-bottom{
-	margin-top: 5px;
-}
-.reply{
-	margin: 10 10 0 10px;
-}
-.reply div{
-	font-weight: bold;
-}
-.reply button{
-	width: 195px;
-	height: 100px;
-}
-.userinfo li{
-	font-weight: bold;
-	display: inline-block;
-}
-input{
-	width: 888px;
-	height: 100px;
-	margin: 5 0 10px;
-}
-.float-r{
-	float: right;
-}
-.a-margin{
-	margin-right: 5px;
-}
-</style>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/display.css">
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/display.js"></script>
 </head>
 <body>
 	<div class="top">
@@ -102,19 +20,16 @@ input{
 			<div class="title">제목</div>
 			<div class="info">
 				<ul class="userinfo">
-					<li>필명</li>
-					<li>아이디</li>
-					<li>작성일</li>
-					<li class="float-r">추천</li>
-					<li class="float-r">조회수</li>
+					<li>${display.writer}</li>
+					<li>${display.id}</li>
+					<li>${display.bDate}</li>
+					<li class="float-r">조회 : ${display.view}</li>
+					<li class="float-r">추천 : ${display.recCnt}</li>
 				</ul>
 			</div>
 		</div>
 		<div class="mid-center">
-			<div class="text">
-				동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세
-				무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
-			</div>
+			<div class="text">${display.contents}</div>
 			<button class="recommend">추천</button>
 		</div>
 	</div>
@@ -128,18 +43,13 @@ input{
 		<div class="comment">
 			<div class="comment-top">
 				<ul class="userinfo">
-					<li>필명</li>
-					<li>아이디</li>
-					<li class="float-r">작성일</li>
+					<li>${display.rWriter}</li>
+					<li>${display.rId}</li>
+					<li class="float-r">${display.rDate}</li>
 				</ul>
 			</div>
 			<div class="comment-mid">
-				<div class="comment-txt">
-					동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세
-					무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
-					남산 위에 저 소나무 철갑을 두른 듯 바람서리 불변함은 우리 기상일세
-					무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
-				</div>
+				<div class="comment-txt">${display.reply}</div>
 			</div>
 			<div class="comment-bottom">
 				<button>댓글의 답글달기</button>

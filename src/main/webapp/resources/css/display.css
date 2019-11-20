@@ -1,0 +1,95 @@
+@charset "EUC-KR";
+.top{
+	position: relative;
+	height: 40px;
+	margin: 20px 0;
+}
+.soccerBoard{
+	position: absolute;
+	font-size: 20px;
+	text-align: center;
+	line-height: 35px;
+}
+.top a{
+	margin-top: 15px;
+}
+.middle{
+	border: 1px solid #343a40;
+}
+.mid-top{
+	margin: 10 10 0 10px;
+}
+.title{
+	text-align: center;
+	font-size: 20px;
+	border-bottom: 1px solid #343a40;
+	margin: 5px 15px;
+	padding-bottom: 5px;
+}
+.info{
+	border-bottom: 1px solid #343a40;
+	margin: 0 15px 15px;
+}
+.userinfo{
+	list-style: none;
+	margin-bottom: 5px;
+}
+.mid-center{
+	margin: 10 10 0 10px;
+}
+.text{
+	height: 500px;
+	padding: 15px;
+}
+.recommend{
+	margin: 10 522 10px;
+} 
+.mid-bottom{
+	height: 46px;
+}
+.mid-bottom a{
+	margin-top: 10px;
+}
+.bottom{
+	border: 1px solid #343a40;
+	margin: 10px 0 15px;;
+}
+.comment{
+	margin: 10px 10px 0 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #343a40;
+}
+.comment-top{
+	border-bottom: 1px solid #343a40; 
+}
+.comment-mid{
+	margin: 15px 0;
+}
+.comment-bottom{
+	margin-top: 5px;
+}
+.reply{
+	margin: 10px 10px 0 10px;
+}
+.reply div{
+	font-weight: bold;
+}
+.reply button{
+	width: 195px;
+	height: 100px;
+}
+.userinfo li{
+	font-weight: bold;
+	display: inline-block;
+}
+input{
+	width: 888px;
+	height: 100px;
+	margin: 5 0 10px;
+}
+.float-r{
+	float: right;
+}
+.a-margin{
+	margin-right: 5px;
+}

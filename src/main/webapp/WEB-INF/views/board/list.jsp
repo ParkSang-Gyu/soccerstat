@@ -12,7 +12,7 @@
 <body>
 	<div class="top">
 		<div>축구 게시판</div>
-		<a href="<%=request.getContextPath()%>/register"><button>글쓰기</button></a>
+		<a class="write" href="<%=request.getContextPath()%>/register"><button>글쓰기</button></a>
 	</div>
 	<div class="middle">
 		<table class="table table-hover">
@@ -29,7 +29,7 @@
 				<c:forEach var="tmp" items="${list}">
 					<tr>
 						<td>${tmp.listNo}</td>
-						<td>${tmp.title}</td>
+						<td><a class="title" href="<%=request.getContextPath()%>/display?listNum=${tmp.listNo}&page=${pageMaker.criteria.page}&perPageNum=${pageMaker.criteria.perPageNum}&type=${pageMaker.criteria.type}&search=${pageMaker.criteria.search}">${tmp.title}</a></td>
 						<td>${tmp.penName}</td>
 						<td>${tmp.day}</td>
 						<td>${tmp.count}</td>
@@ -37,21 +37,39 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<a href="<%=request.getContextPath()%>/register"><button>글쓰기</button></a>
+		<a class="write" href="<%=request.getContextPath()%>/register"><button>글쓰기</button></a>
 	</div>
 	<ul class="pagination">
-		<li class="page-item"><a class="page-link hover" href="#">이전</a></li>
-	  	<li class="page-item active"><a class="page-link" href="#">1</a></li>
-	  	<li class="page-item"><a class="page-link" href="#">2</a></li>
-	  	<li class="page-item"><a class="page-link" href="#">다음</a></li>
+		<c:if test="${pageMaker.prev}">
+			<li class="page-item">
+				<a class="page-link" href="<%=request.getContextPath()%>/list?page=${pageMaker.startPage-1}&perPageNum=${pageMaker.criteria.perPageNum}&type=${pageMaker.criteria.type}&search=${pageMaker.criteria.search}">이전</a>
+			</li>
+		</c:if>
+		<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage}" var="index">
+	    	<c:if test="${pageMaker.criteria.page == index }">
+		        <li class="page-item active">
+		            <a class="page-link " href="<%=request.getContextPath()%>/list?page=${index}&perPageNum=${pageMaker.criteria.perPageNum}&type=${pageMaker.criteria.type}&search=${pageMaker.criteria.search}">${index}</a>
+		        </li>
+        	</c:if>
+	        <c:if test="${pageMaker.criteria.page != index }">
+		        <li class="page-item">
+		            <a class="page-link" href="<%=request.getContextPath()%>/list?page=${index}&perPageNum=${pageMaker.criteria.perPageNum}&type=${pageMaker.criteria.type}&search=${pageMaker.criteria.search}">${index}</a>
+		        </li>
+	        </c:if>
+	    </c:forEach>
+	    <c:if test="${pageMaker.next}">
+	  		<li class="page-item">
+	  			<a class="page-link" href="<%=request.getContextPath()%>/list?page=${pageMaker.endPage+1}&perPageNum=${pageMaker.criteria.perPageNum}&type=${pageMaker.criteria.type}&search=${pageMaker.criteria.search}">다음</a>
+  			</li>
+  		</c:if>
 	</ul>
-	<form action="" class="search">
-		<select class="search-sel">
-			<option>제목</option>
-			<option>내용</option>
-			<option>필명</option>
+	<form class="search" action="<%=request.getContextPath()%>/list" method="get">
+		<select class="search-sel" name="type">
+			<option value="1" <c:if test="${pageMaker.criteria.type == 1}">selected</c:if> >제목</option>
+			<option value="2" <c:if test="${pageMaker.criteria.type == 2}">selected</c:if>>내용</option>
+			<option value="3" <c:if test="${pageMaker.criteria.type == 3}">selected</c:if>>필명</option>
 		</select>
-		<input class="search-inp">
+		<input class="search-inp" name="search" type="text" value="${pageMaker.criteria.search}">
 		<button>검색</button>
 	</form>
 </body>

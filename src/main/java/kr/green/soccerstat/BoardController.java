@@ -2,14 +2,14 @@ package kr.green.soccerstat;
 
 import java.util.ArrayList;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.green.soccerstat.pagination.Criteria;
+import kr.green.soccerstat.pagination.PageMaker;
 import kr.green.soccerstat.service.BoardService;
 import kr.green.soccerstat.vo.BoardVO;
 
@@ -18,30 +18,37 @@ import kr.green.soccerstat.vo.BoardVO;
  * Handles requests for the application home page.
  */
 @Controller
-public class boardController {
+public class BoardController {
 	
 	@Autowired
 	BoardService boardService;
 	
-	private static final Logger logger = LoggerFactory.getLogger(boardController.class);
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@RequestMapping(value= {"/list"},method = RequestMethod.GET)
-	public ModelAndView listGet(ModelAndView mv,BoardVO bVo) throws Exception{
+	public ModelAndView listGet(ModelAndView mv, Criteria cri) throws Exception{
 	    
-		ArrayList<BoardVO> list = boardService.getList(bVo);
+		ArrayList<BoardVO> list = boardService.getList(cri);
+		
+		PageMaker pm = new PageMaker();
+		pm.setCriteria(cri);
+		pm.setDisplayPageNum(2);
+		int totalCount = boardService.getCountBoardList(cri);
+		pm.setTotalCount(totalCount);
 		
 		mv.addObject("list", list);
+		mv.addObject("pageMaker", pm);
 	    mv.setViewName("/board/list");
 	    
 	    return mv;
 	}
 	
 	@RequestMapping(value= {"/display"},method = RequestMethod.GET)
-	public ModelAndView displayGet(ModelAndView mv) throws Exception{
+	public ModelAndView displayGet(ModelAndView mv, int listNum) throws Exception{
 	    
+		mv.addObject("listNum", listNum);
+		
+		BoardVO display = boardService.getDisplay(listNum);
+		
+		mv.addObject("display", display);
 	    mv.setViewName("/board/display");
 	    
 	    return mv;

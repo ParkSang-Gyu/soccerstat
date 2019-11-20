@@ -13,8 +13,11 @@
 	padding: 0;
 	font-size: 13px;
 }
-input:focus,select:focus,button:focus{
+input:focus,select:focus{
 	outline-color: #343a40;
+}
+button:focus{
+	outline: none;
 }
 input:focus::-webkit-input-placeholder{
 	color:transparent;

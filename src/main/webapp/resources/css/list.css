@@ -1,16 +1,22 @@
 @charset "EUC-KR";
-a{
-	color: white;
-	float: right;
-}
 button{
 	padding: 5px;
 	border: 0;
 	outline: 0;
 	width: 60px;
 }
+.table th{
+	text-align: center;
+}
 .table td{
-	padding: 5px; 
+	padding: 5px;
+	text-align: center;
+}
+.table td:nth-child(2){
+	text-align: left;
+}
+.pagination a:hover{
+	background-color: white;
 }
 .top{
 	height: 30px;
@@ -27,6 +33,14 @@ button{
 }
 .middle{
 	margin: 10px 0;
+}
+.title{
+	color: black;
+	float: left;
+}
+.title:hover{
+	text-decoration: none;
+	color: black;
 }
 .pagination{
 	margin-top: 80px;
