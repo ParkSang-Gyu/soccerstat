@@ -5,148 +5,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
-.top{
-	font-size: 20px;
-	font: bold;
-	text-align: center;
-	margin: 20px 0 30px;
-}
-.row{
-	margin-bottom: 20px;
-}
-.row button{
-	margin-left: 10px;
-	padding: 0 10px;
-}
-.row.sign button{
-	width: 100px;
-	padding: 10px 0;
-}
-.id1{
-	margin: 0 20 0 236px;
-	line-height: 35px;
-}
-.id2{
-	width: 274px;
-}
-.condition{
-	margin: 5 0 0 306px;
-	font-size: 10px;
-	color: #0078FF;
-}
-.condition:nth-child(2){
-	width: 400px;
-}
-.pw1{
-	margin: 0 20 0 223px;
-	line-height: 35px;
-}
-.pw2{
-	width: 343px;
-}
-.pw3{
-	margin: 0 20 0 194px;
-	line-height: 35px;
-}
-.pw4{
-	width: 343px;
-}
-.name{
-	margin: 0 20 0 250px;
-	line-height: 35px;
-}
-.birth1{
-	margin: 0 20 0 224px;
-	line-height: 35px;
-}
-.birth2{
-	width: 100px;
-}
-.birth3{
-	width: 50px;
-}
-.line{
-	line-height: 35px;
-	margin: 0 5px;
-}
-.gender1{
-	margin: 0 20 0 250px;
-	line-height: 35px;
-}
-.gender2{
-	width: 500px;
-	display: inline-block;
-}
-.gender3{
-	margin: 0 10px 0 0;
-	line-height: 35px;
-}
-.gender2 input{
-	width: 10px;
-	vertical-align: middle;
-	margin-right: 20px;
-}
-.phone{
-	margin: 0 20 0 224px;
-	line-height: 35px;
-}
-.mail1{
-	margin: 0 20 0 237px;
-	line-height: 35px;
-}
-.mail2{
-	width: 279px;
-}
-.mail3{
-	margin: 0 8px;
-	font-size: 15px;
-	line-height: 30px;
-}
-.sign{
-	padding-left: 420px;
-}
-.sign button{
-	color: white;
-}
-input{
-	width: 400px;
-}
-</style>
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/signin.css">
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/signin.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery.validate.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/additional-methods.js"></script>	
 </head>
 <body>
 	<div class="top">회원가입</div>
 	<div class="bottom">
-		<form action="">
+		<form action="" method="post" id="signin">
 			<div class="row">
-				<label class="id1">아이디</label>
-				<input class="id2" placeholder="아이디를 입력하세요">
-				<button>아이디 중복확인</button>
+				<label class="identity1">아이디</label>
+				<input class="identity2" placeholder="아이디를 입력하세요" name="id">
+				<button type="button" id="confirm">아이디 중복확인</button>
 				<div class="condition">특수문자, 기호, 띄어쓰기 불가능 (최대 12자)</div>
 			</div>
 			<div class="row">
-				<label class="pw1">비밀번호</label>
-				<input class="pw2" placeholder="비밀번호를 입력하세요">
+				<label class="password1">비밀번호</label>
+				<input class="password2" placeholder="비밀번호를 입력하세요" name="pw" id="pw">
 				<div class="condition">영문, 숫자 조합 8~12자 (특수문자, 기호, 띄어쓰기 불가능)</div>
 			</div>
 			<div class="row">
-				<label class="pw3">비밀번호 확인</label>
-				<input class="pw4" placeholder="비밀번호를 입력하세요">
-				<button>확인</button>
+				<label class="password3">비밀번호 확인</label>
+				<input class="password4" placeholder="비밀번호를 입력하세요" name="pw2">
+				<button type="button" id="pwConfirm">확인</button>
 			</div>
+			<!-- <div class="row">
+				<label class="writer1">필명</label>
+				<input class="writer2" placeholder="필명을 입력하세요" name="writer1" id="writer">
+				<button id="writer2">필명 중복확인</button>
+				<div class="condition">특수문자, 기호, 띄어쓰기 불가능 (최대 12자)</div>
+			</div> -->
 			<div class="row">
 				<label class="name">이름</label>
-				<input placeholder="이름을 입력하세요">
+				<input placeholder="이름을 입력하세요" name="name">
 			</div>
-			<div class="row">
+			<!-- <div class="row">
 				<label class="birth1">생년월일</label>
-				<input class="birth2" placeholder="년도">
+				<input class="birth2" placeholder="년도" name="year">
 				<label class="line">년</label>
-				<input class="birth3" placeholder="월">
+				<input class="birth3" placeholder="월" name="month">
 				<label class="line">월</label>
-				<input class="birth3" placeholder="일">
+				<input class="birth3" placeholder="일" name="day">
 				<label class="line">일</label>
-			</div>
+			</div> -->
 			<div class="row">
 				<label class="gender1">성별</label>
 				<div class="gender2">
@@ -158,19 +61,19 @@ input{
 			</div>
 			<div class="row">
 				<label class="phone">휴대전화</label>
-				<input placeholder="휴대전화번호를 입력하세요">
+				<input placeholder="휴대전화번호를 입력하세요" name="hp">
 			</div>
 			<div class="row">
 				<label class="mail1">이메일</label>
-				<input class="mail2" placeholder="이메일을 입력하세요">
-				<label class="mail3">@</label>
+				<input class="mail2" placeholder="이메일을 입력하세요" name="email">
+				<!-- <label class="mail3">@</label>
 				<select>
 					<option>직접입력
 					<option>naver.com
 					<option>hanmail.net
 					<option>gmail.com
 					<option>nate.com
-				</select>
+				</select> -->
 			</div>
 			<div class="row sign">
 				<button>가입</button>

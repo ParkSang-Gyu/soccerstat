@@ -1,0 +1,112 @@
+@charset "EUC-KR";
+.top{
+	font-size: 20px;
+	font: bold;
+	text-align: center;
+	margin: 20px 0 30px;
+}
+.row{
+	margin-bottom: 20px;
+	margin-right: 0;
+	margin-left: 200px;
+}
+.row label{
+	margin-right: 15px;
+}
+.row button{
+	margin-left: 10px;
+	padding: 0 10px;
+}
+.row.sign button{
+	width: 100px;
+	padding: 10px 0;
+}
+.identity1{
+	margin: 0 20 0 236px;
+	line-height: 35px;
+}
+.identity2{
+	width: 274px;
+}
+.condition{
+	margin: 5 0 0 306px;
+	font-size: 10px;
+	color: #0078FF;
+}
+.condition:nth-child(2){
+	width: 400px;
+}
+.password1{
+	margin: 0 20 0 223px;
+	line-height: 35px;
+}
+.password2{
+	width: 343px;
+}
+.password3{
+	margin: 0 20 0 194px;
+	line-height: 35px;
+}
+.password4{
+	width: 343px;
+}
+.name{
+	margin: 0 20 0 250px;
+	line-height: 35px;
+}
+.birth1{
+	margin: 0 20 0 224px;
+	line-height: 35px;
+}
+.birth2{
+	width: 100px;
+}
+.birth3{
+	width: 50px;
+}
+.line{
+	line-height: 35px;
+	margin: 0 5px;
+}
+.gender1{
+	margin: 0 20 0 250px;
+	line-height: 35px;
+}
+.gender2{
+	width: 500px;
+	display: inline-block;
+}
+.gender3{
+	margin: 0 10px 0 0;
+	line-height: 35px;
+}
+.gender2 input{
+	width: 10px;
+	vertical-align: middle;
+	margin-right: 20px;
+}
+.phone{
+	margin: 0 20 0 224px;
+	line-height: 35px;
+}
+.mail1{
+	margin: 0 20 0 237px;
+	line-height: 35px;
+}
+.mail2{
+	width: 279px;
+}
+.mail3{
+	margin: 0 8px;
+	font-size: 15px;
+	line-height: 30px;
+}
+.sign{
+	padding-left: 420px;
+}
+.sign button{
+	color: white;
+}
+input{
+	width: 400px;
+}

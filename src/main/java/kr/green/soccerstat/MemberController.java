@@ -1,12 +1,20 @@
 package kr.green.soccerstat;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.soccerstat.service.MemberService;
@@ -36,17 +44,54 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPost(Model model, String id, String pw) {
+	public String loginPost(Model model, MemberVO mVo) {
 		
-		MemberVO user = memberService.login(id,pw); 
-		if( user != null) {
-			logger.info("로그인 성공");
-			model.addAttribute("user",user);
+		logger.info("로그인 진행중");
+		MemberVO user = memberService.login(mVo);
+		if(user != null) {
+			model.addAttribute("user", user);
+			return "redirect:/";
+		}
+		return "redirect:/signin";		
+	}
+	
+	@RequestMapping(value="/logout")
+	public String signout(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		session.removeAttribute("user");
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value= {"/signin"}, method = RequestMethod.GET)
+	public ModelAndView signinGet(ModelAndView mv) throws Exception{
+	    
+	    mv.setViewName("/member/signin");
+	    
+	    return mv;
+	}
+	
+	@RequestMapping(value = "/signin", method = RequestMethod.POST)
+	public String signinPost(MemberVO mVo) {
+		logger.info("회원가입 진행중");
+		if(memberService.signin(mVo)) {
+			logger.info("회원가입 성공");
 			return "redirect:/";
 		}else {
-			logger.info("로그인 실패");
-			return "redirect:/login";
-		}		
+			return "redirect:/signin";
+		}
+	}
+	
+	@RequestMapping(value ="/confirm")
+	@ResponseBody
+	public Map<Object, Object> idcheck(@RequestBody String id){
+	    Map<Object, Object> map = new HashMap<Object, Object>();
+	    
+	    //변수 id에 저장된 아이디가 회원 아이디인지 아닌지 확인하여 isMember변수에 
+	    //담아 보낸다.
+	    boolean isMember = memberService.isMember(id);
+	    map.put("isMember", isMember);
+	    return map;
 	}
 	
 	@RequestMapping(value= {"/searchId"},method = RequestMethod.GET)
@@ -65,14 +110,6 @@ public class MemberController {
 	    return mv;
 	}
 	
-	@RequestMapping(value= {"/signin"},method = RequestMethod.GET)
-	public ModelAndView signinGet(ModelAndView mv) throws Exception{
-	    
-	    mv.setViewName("/member/signin");
-	    
-	    return mv;
-	}
-	
 	@RequestMapping(value= {"/modify"},method = RequestMethod.GET)
 	public ModelAndView modifyGet(ModelAndView mv) throws Exception{
 	    
@@ -80,4 +117,5 @@ public class MemberController {
 	    
 	    return mv;
 	}
+	
 }

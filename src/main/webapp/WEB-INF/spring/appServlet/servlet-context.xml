@@ -36,4 +36,35 @@
 	    </beans:property>
 	</beans:bean>
 	
+	<beans:bean id="loginInterceptor" 
+		class="kr.green.soccerstat.interceptor.LoginInterceptor"></beans:bean>
+	<beans:bean id="authInterceptor" 
+		class="kr.green.soccerstat.interceptor.AuthInterceptor"></beans:bean>
+	<beans:bean id="unauthInterceptor" 
+		class="kr.green.soccerstat.interceptor.UnauthInterceptor"></beans:bean>
+	<beans:bean id="adminInterceptor" 
+		class="kr.green.soccerstat.interceptor.AdminInterceptor"></beans:bean>
+	
+	<interceptors>
+	    <interceptor>
+	        <mapping path="/login"/> <!-- /login이 입력되면 로그인 인터셉터 호출 -->
+	        <beans:ref bean="loginInterceptor"/>
+	    </interceptor>
+		<interceptor>
+			<mapping path="/register"/>
+	        <mapping path="/bmodify"/>
+	        <mapping path="/modify"/>
+	        <beans:ref bean="authInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/"/>
+	        <mapping path="/login"/>
+	        <mapping path="/signin"/>
+	        <beans:ref bean="unauthInterceptor"/>
+		</interceptor>
+		<interceptor>
+	        <mapping path="/admin/**"/>
+	        <beans:ref bean="adminInterceptor"/>
+    	</interceptor>
+	</interceptors>	
 </beans:beans>

@@ -6,7 +6,6 @@
 <html>
 <head>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login.css">
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/login.js"></script>
 </head>
 <body>
 	<div class="sitename">SOCCERSTAT</div>
