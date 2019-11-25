@@ -4,6 +4,7 @@ public class MemberVO {
 
 	private String id;
 	private String pw;
+	private String writer;
 	private String name;
 	private String gender;
 	private String hp;
@@ -21,6 +22,12 @@ public class MemberVO {
 	}
 	public void setPw(String pw) {
 		this.pw = pw;
+	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 	public String getName() {
 		return name;
@@ -52,9 +59,10 @@ public class MemberVO {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
+	
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", gender=" + gender
+		return "MemberVO [id=" + id + ", pw=" + pw + ", writer=" + writer + ", name=" + name + ", gender=" + gender
 				+ ", hp=" + hp + ", email=" + email + ", authority=" + authority + "]";
 	}
 	

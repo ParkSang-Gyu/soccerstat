@@ -7,10 +7,6 @@
 }
 .row{
 	margin-bottom: 20px;
-	margin-right: 0;
-}
-.row label{
-	margin-right: 15px;
 }
 .row button{
 	margin-left: 10px;
@@ -20,33 +16,31 @@
 	width: 100px;
 	padding: 10px 0;
 }
-.identity1{
+.id1{
 	margin: 0 20px 0 236px;
 	line-height: 35px;
 }
-.identity2{
+.id2{
 	width: 274px;
 }
 .condition{
-	margin: 5px 0 0 290px;
+	margin: 5px 0 0 306px;
+	width: 400px;
 	font-size: 10px;
 	color: #0078FF;
 }
-.password1{
+.pw1{
 	margin: 0 20px 0 223px;
 	line-height: 35px;
 }
-.password2{
+.pw2{
 	width: 343px;
 }
-.row:nth-child(2) .condition{
-	width: 400px;
-}
-.password3{
+.pw3{
 	margin: 0 20px 0 194px;
 	line-height: 35px;
 }
-.password4{
+.pw4{
 	width: 343px;
 }
 .name{

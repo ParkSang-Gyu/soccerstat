@@ -7,7 +7,6 @@
 <head>
 <title>축구 게시판</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/list.css">
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/list.js"></script>
 </head>
 <body>
 	<div class="top">
@@ -28,11 +27,11 @@
 			<tbody>
 				<c:forEach var="tmp" items="${list}">
 					<tr>
-						<td>${tmp.listNo}</td>
-						<td><a class="title" href="<%=request.getContextPath()%>/display?listNum=${tmp.listNo}&page=${pageMaker.criteria.page}&perPageNum=${pageMaker.criteria.perPageNum}&type=${pageMaker.criteria.type}&search=${pageMaker.criteria.search}">${tmp.title}</a></td>
-						<td>${tmp.penName}</td>
-						<td>${tmp.day}</td>
-						<td>${tmp.count}</td>
+						<td>${tmp.num}</td>
+						<td><a class="title" href="<%=request.getContextPath()%>/display?num=${tmp.num}">${tmp.title}</a></td>
+						<td>${tmp.writer}</td>
+						<td>${tmp.registered}</td>
+						<td>${tmp.views}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

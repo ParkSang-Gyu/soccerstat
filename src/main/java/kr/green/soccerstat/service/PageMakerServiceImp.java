@@ -1,8 +1,11 @@
 package kr.green.soccerstat.service;
 
+import org.springframework.stereotype.Service;
+
 import kr.green.soccerstat.pagination.Criteria;
 import kr.green.soccerstat.pagination.PageMaker;
 
+@Service
 public class PageMakerServiceImp implements PageMakerService{
 
 	@Override

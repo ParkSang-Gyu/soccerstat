@@ -10,7 +10,7 @@
 <body>
 	<div class="sitename">SOCCERSTAT</div>
 	<div class="loginBox border">
-		<form action="" method="post">
+		<form action="<%=request.getContextPath()%>/login" method="post">
 			<div class="idBox">
 				<input type="text" name="id" placeholder="아이디를 입력하세요">
 			</div>

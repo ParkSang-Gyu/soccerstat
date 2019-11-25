@@ -1,27 +1,32 @@
 package kr.green.soccerstat.vo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BoardVO {
 
-	private int listNo;
+	private int num;
 	private String title;
 	private String contents;
-	private String id;
 	private String writer;
-	private Date bDate;
-	private int view;
-	private int recCnt;
-	private int replyNo;
-	private String rId;
-	private String rWriter;
-	private Date rDate;
-	private String reply;
-	public int getListNo() {
-		return listNo;
+	private Date registered;
+	private String file;
+	private int views;
+	private String valid;
+	
+	
+	public String getValid() {
+		return valid;
 	}
-	public void setListNo(int listNo) {
-		this.listNo = listNo;
+	public void setValid(String valid) {
+		this.valid = valid;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
 	}
 	public String getTitle() {
 		return title;
@@ -35,72 +40,56 @@ public class BoardVO {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getWriter() {
 		return writer;
 	}
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public Date getbDate() {
-		return bDate;
+	public String getRegistered() {
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+		
+		return f.format(registered);
 	}
-	public void setbDate(Date bDate) {
-		this.bDate = bDate;
+	public void setRegistered(Date registered) {
+		this.registered = registered;
 	}
-	public int getView() {
-		return view;
+	public void setRegistered(String registered) {
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+		try {
+			this.registered = transFormat.parse(registered);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
-	public void setView(int view) {
-		this.view = view;
+	public String getFile(){
+		return file;
 	}
-	public int getRecCnt() {
-		return recCnt;
+	public String getFileName() {
+		//UUID가 제거되도록 코드를 작성
+		//c52c5637-b875-41fe-a1ed-d24cf6caad2c_다운로드.jpg
+		//=>다운로드.jpg
+		if(file == null)
+			return "";
+		int index = file.indexOf("_");
+		return file.substring(index+1);
 	}
-	public void setRecCnt(int recCnt) {
-		this.recCnt = recCnt;
+	public void setFile(String file) {
+		this.file = file;
 	}
-	public int getReplyNo() {
-		return replyNo;
+	public int getViews() {
+		return views;
 	}
-	public void setReplyNo(int replyNo) {
-		this.replyNo = replyNo;
+	public void setViews(int views) {
+		this.views = views;
 	}
-	public String getrId() {
-		return rId;
-	}
-	public void setrId(String rId) {
-		this.rId = rId;
-	}
-	public String getrWriter() {
-		return rWriter;
-	}
-	public void setrWriter(String rWriter) {
-		this.rWriter = rWriter;
-	}
-	public Date getrDate() {
-		return rDate;
-	}
-	public void setrDate(Date rDate) {
-		this.rDate = rDate;
-	}
-	public String getReply() {
-		return reply;
-	}
-	public void setReply(String reply) {
-		this.reply = reply;
-	}
-	
 	@Override
 	public String toString() {
-		return "BoardVO [listNo=" + listNo + ", title=" + title + ", contents=" + contents + ", id=" + id + ", writer="
-				+ writer + ", bDate=" + bDate + ", view=" + view + ", recCnt=" + recCnt + ", replyNo=" + replyNo
-				+ ", rId=" + rId + ", rWriter=" + rWriter + ", rDate=" + rDate + ", reply=" + reply + "]";
+		return "BoardVO [num=" + num + ", title=" + title + ", contents=" + contents + ", writer=" + writer
+				+ ", registered=" + registered + ", file=" + file + ", views=" + views + ", valid=" + valid + "]";
 	}
+	
+	
 	
 }

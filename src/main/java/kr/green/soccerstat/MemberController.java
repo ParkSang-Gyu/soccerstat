@@ -50,9 +50,10 @@ public class MemberController {
 		MemberVO user = memberService.login(mVo);
 		if(user != null) {
 			model.addAttribute("user", user);
-			return "redirect:/";
+			logger.info("로그인 성공");
+			return "redirect:/list";
 		}
-		return "redirect:/signin";		
+		return "redirect:/login";		
 	}
 	
 	@RequestMapping(value="/logout")
@@ -60,7 +61,8 @@ public class MemberController {
 		
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");
-		return "redirect:/";
+		logger.info("로그아웃 성공");
+		return "redirect:/list";
 	}
 	
 	@RequestMapping(value= {"/signin"}, method = RequestMethod.GET)
@@ -94,6 +96,14 @@ public class MemberController {
 	    return map;
 	}
 	
+	@RequestMapping(value= {"/retouch"},method = RequestMethod.GET)
+	public ModelAndView retouchGet(ModelAndView mv) throws Exception{
+	    
+	    mv.setViewName("/member/retouch");
+	    
+	    return mv;
+	}
+	
 	@RequestMapping(value= {"/searchId"},method = RequestMethod.GET)
 	public ModelAndView searchIdGet(ModelAndView mv) throws Exception{
 	    
@@ -110,12 +120,6 @@ public class MemberController {
 	    return mv;
 	}
 	
-	@RequestMapping(value= {"/modify"},method = RequestMethod.GET)
-	public ModelAndView modifyGet(ModelAndView mv) throws Exception{
-	    
-	    mv.setViewName("/member/modify");
-	    
-	    return mv;
-	}
+	
 	
 }

@@ -7,7 +7,6 @@
 <head>
 <title>상세 페이지</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/display.css">
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/display.js"></script>
 </head>
 <body>
 	<div class="top">
@@ -20,36 +19,40 @@
 			<div class="title">제목</div>
 			<div class="info">
 				<ul class="userinfo">
-					<li>${display.writer}</li>
-					<li>${display.id}</li>
-					<li>${display.bDate}</li>
-					<li class="float-r">조회 : ${display.view}</li>
-					<li class="float-r">추천 : ${display.recCnt}</li>
+					<li>${board.writer}</li>
+					<li></li>
+					<li>${board.registered}</li>
+					<li class="float-r">조회 : ${board.views}</li>
+					<li class="float-r">추천 : </li>
 				</ul>
 			</div>
 		</div>
 		<div class="mid-center">
-			<div class="text">${display.contents}</div>
+			<div class="text">${board.contents}</div>
 			<button class="recommend">추천</button>
 		</div>
 	</div>
 	<div class="mid-bottom">
-		<a class="float-r"><button>삭제</button></a>
-		<a class="float-r a-margin" href="<%=request.getContextPath()%>/bmodify"><button>수정</button></a>
 		<a class="float-r a-margin" href="<%=request.getContextPath()%>/register"><button>글쓰기</button></a>
 		<a class="float-r a-margin" href="<%=request.getContextPath()%>/list"><button>목록</button></a>
+		<c:if test="${user.writer eq board.writer }">
+			<a class="float-r a-margin" href="<%=request.getContextPath()%>/modify?num=${board.num}"><button>수정</button></a>
+		</c:if>
+		<c:if test="${user.writer eq board.writer }">
+			<a class="float-r" href="<%=request.getContextPath()%>/delete?num=${board.num}"><button>삭제</button></a>
+		</c:if>
 	</div>
 	<div class="bottom">
 		<div class="comment">
 			<div class="comment-top">
 				<ul class="userinfo">
-					<li>${display.rWriter}</li>
-					<li>${display.rId}</li>
-					<li class="float-r">${display.rDate}</li>
+					<li></li>
+					<li></li>
+					<li class="float-r"></li>
 				</ul>
 			</div>
 			<div class="comment-mid">
-				<div class="comment-txt">${display.reply}</div>
+				<div class="comment-txt"></div>
 			</div>
 			<div class="comment-bottom">
 				<button>댓글의 답글달기</button>
