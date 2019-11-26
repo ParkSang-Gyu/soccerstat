@@ -7,6 +7,10 @@
 }
 .row{
 	margin-bottom: 20px;
+	margin-right: 0;
+}
+.row label{
+	margin-right: 15px;
 }
 .row button{
 	margin-left: 10px;
@@ -16,46 +20,37 @@
 	width: 100px;
 	padding: 10px 0;
 }
-.id1{
-	margin: 0 20px 0 236px;
-	line-height: 35px;
-}
-.id2{
-	width: 274px;
-}
-.condition{
-	margin: 5px 0 0 306px;
-	width: 400px;
-	font-size: 10px;
-	color: #0078FF;
-}
-.pw1{
-	margin: 0 20px 0 223px;
-	line-height: 35px;
-}
-.pw2{
-	width: 343px;
-}
-.pw3{
-	margin: 0 20px 0 194px;
-	line-height: 35px;
-}
-.pw4{
-	width: 343px;
-}
 .name{
 	margin: 0 20px 0 250px;
 	line-height: 35px;
 }
-.birth1{
-	margin: 0 20px 0 224px;
+.writer{
+	margin: 0 20px 0 250px;
 	line-height: 35px;
 }
-.birth2{
-	width: 100px;
+.identity1{
+	margin: 0 20px 0 237px;
+	line-height: 35px;
 }
-.birth3{
-	width: 50px;
+.condition{
+	margin: 5px 0 0 290px;
+	font-size: 10px;
+	color: #0078FF;
+}
+.password1{
+	margin: 0 20px 0 195px;
+	line-height: 35px;
+}
+.row:nth-child(2) .condition{
+	width: 400px;
+}
+.password3{
+	margin: 0 20px 0 208px;
+	line-height: 35px;
+}
+.password5{
+	margin: 0 20px 0 195px;
+	line-height: 35px;
 }
 .line{
 	line-height: 35px;
@@ -86,13 +81,9 @@
 	margin: 0 20px 0 237px;
 	line-height: 35px;
 }
-.mail2{
-	width: 279px;
-}
-.mail3{
-	margin: 0 8px;
-	font-size: 15px;
-	line-height: 30px;
+.auth{
+	margin: 0 20px 0 250px;
+	line-height: 35px;
 }
 .sign{
 	padding-left: 420px;
@@ -102,4 +93,7 @@
 }
 input{
 	width: 400px;
+}
+.none{
+	display: none;
 }

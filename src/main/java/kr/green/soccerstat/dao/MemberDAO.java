@@ -11,9 +11,13 @@ public interface MemberDAO {
 
 	void signin(MemberVO mVo);
 	
+	void retouch(MemberVO mVo);
+	
 	ArrayList<MemberVO> getAllMember(Criteria cri);
 
 	int getTotalCount();
 
 	void updateAuthority(MemberVO mVo);
+
+	
 }

@@ -49,6 +49,17 @@ public class MemberServiceImp implements MemberService{
 	}
 
 	@Override
+	public boolean retouch(MemberVO mVo, String oldPw) {
+		if(mVo == null)	
+			return false;
+		if(memberDao.getMember(mVo.getId()).getPw().equals(oldPw)) {
+			memberDao.retouch(mVo);
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
 	public boolean isMember(String id) {
 		if(memberDao.getMember(id) == null) {
 			return false;
@@ -70,4 +81,6 @@ public class MemberServiceImp implements MemberService{
 	public void updateAuthority(MemberVO mVo) {
 		memberDao.updateAuthority(mVo);
 	}
+
+	
 }

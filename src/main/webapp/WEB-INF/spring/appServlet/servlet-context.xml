@@ -55,7 +55,7 @@
 	    <!--
 		<beans:constructor-arg value="서버에 저장할 경로"></beans:constructor-arg>
 		-->
-	    <beans:constructor-arg value="C:\\JIK\\git\\uploadfiles"></beans:constructor-arg>
+	    <beans:constructor-arg value="C:\\PSG\\git\\uploadfiles"></beans:constructor-arg>
 	</beans:bean>
 	
 	<interceptors>

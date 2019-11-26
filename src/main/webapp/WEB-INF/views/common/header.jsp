@@ -33,7 +33,7 @@
 	list-style: none;
 	display: inline-flex;
 	margin: 0;
-	width: 180px;
+	
 	font-size: 25px;
 	margin-left: auto;
 }
@@ -68,8 +68,10 @@
 	color: black;
 }
 .logout{
-	position: absolute;
-	margin-left: 80px;
+	float: right;
+}
+.retouch{
+	float: right;
 }
 li{
 	padding: 5px 10px;
@@ -142,6 +144,11 @@ $(document).ready(function () {
 			    	<c:if test="${user ne null}">
 				    	<li class="logout">
 					      <a href="<%=request.getContextPath()%>/logout">로그아웃</a>
+					    </li>
+				    </c:if>
+				    <c:if test="${user ne null}">
+				    	<li class="retouch">
+					      <a href="<%=request.getContextPath()%>/retouch">회원정보수정</a>
 					    </li>
 				    </c:if>
 			  	</ul>

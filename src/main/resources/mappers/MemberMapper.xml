@@ -10,6 +10,13 @@
 	  	insert into soccerstat.member(id,pw,name,gender,hp,email)
 	  		values(#{id},#{pw},#{name},#{gender},#{hp},#{email})
 	</insert>
+	<update id="retouch">
+	  	update soccerstat.member
+	  		set
+	  			pw = #{pw},writer = #{writer},gender = #{gender},hp = #{hp},email = #{email}
+	  		where
+	  			id = #{id}
+    </update>
 	<select id="getAllMember" resultType="kr.green.soccerstat.vo.MemberVO">
 	  	select * from soccerstat.member order by id asc limit #{pageStart}, #{perPageNum}
 	</select>

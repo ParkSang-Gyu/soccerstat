@@ -75,13 +75,13 @@ public class MemberController {
 	
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public String signinPost(MemberVO mVo) {
-		logger.info("회원가입 진행중");
+		logger.info("회원가입 진행중"); 
 		if(memberService.signin(mVo)) {
-			logger.info("회원가입 성공");
-			return "redirect:/";
-		}else {
-			return "redirect:/signin";
-		}
+			logger.info("회원가입 성공"); 
+			return "redirect:/"; 
+		}else { 
+			return "redirect:/signin"; 
+		}	 
 	}
 	
 	@RequestMapping(value ="/confirm")
@@ -98,12 +98,28 @@ public class MemberController {
 	
 	@RequestMapping(value= {"/retouch"},method = RequestMethod.GET)
 	public ModelAndView retouchGet(ModelAndView mv) throws Exception{
-	    
+		
 	    mv.setViewName("/member/retouch");
 	    
 	    return mv;
 	}
 	
+	@RequestMapping(value = "/retouch", method = RequestMethod.POST)
+	public ModelAndView retouchPost(ModelAndView mv, MemberVO mVo, String oldPw) {
+		logger.info("회원정보수정 진행 중");
+		
+	    if(memberService.retouch(mVo,oldPw)) { 
+	    	logger.info("회원정보수정 성공");
+	    	mv.setViewName("/board/list"); 
+	    	return mv; 
+	    }
+	  
+	    mv.setViewName("/member/retouch");
+	  
+	    return mv;
+		 
+	}
+
 	@RequestMapping(value= {"/searchId"},method = RequestMethod.GET)
 	public ModelAndView searchIdGet(ModelAndView mv) throws Exception{
 	    

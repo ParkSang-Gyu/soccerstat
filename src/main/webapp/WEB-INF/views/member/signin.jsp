@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/signin.css">
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/signin.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery.validate.js"></script>

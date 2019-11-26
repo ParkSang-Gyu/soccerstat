@@ -11,6 +11,8 @@ public interface MemberService {
 
 	public boolean signin(MemberVO mVo);
 
+	public boolean retouch(MemberVO mVo, String oldPw);
+	
 	public boolean isMember(String id);
 
 	public ArrayList<MemberVO> getAllMember(Criteria cri);
@@ -18,6 +20,8 @@ public interface MemberService {
 	public int getTotalCount();
 
 	public void updateAuthority(MemberVO mVo);
+
+	
 	
 
 }
