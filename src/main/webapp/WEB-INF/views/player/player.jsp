@@ -24,7 +24,7 @@
 			</div>
 			<div class="info2">
 				<div class="name">${playerInfo.player}</div>
-				<div>${playerInfo.team}</div>
+				<div><a href="<%=request.getContextPath()%>/team?team=${playerInfo.team}">${playerInfo.team}</a></div>
 				<div>${playerInfo.backNo}</div>
 				<div>${playerInfo.position}</div>
 			</div>

@@ -30,12 +30,12 @@
 				<input class="password4" placeholder="비밀번호를 입력하세요" name="pw2">
 				<button type="button" id="pwConfirm">확인</button>
 			</div>
-			<!-- <div class="row">
+			<div class="row">
 				<label class="writer1">필명</label>
-				<input class="writer2" placeholder="필명을 입력하세요" name="writer1" id="writer">
-				<button id="writer2">필명 중복확인</button>
+				<input placeholder="필명을 입력하세요" name="writer" id="writer">
+				<button id="writerConfirm">필명 중복확인</button>
 				<div class="condition">특수문자, 기호, 띄어쓰기 불가능 (최대 12자)</div>
-			</div> -->
+			</div>
 			<div class="row">
 				<label class="name">이름</label>
 				<input placeholder="이름을 입력하세요" name="name">

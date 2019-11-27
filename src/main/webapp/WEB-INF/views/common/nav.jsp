@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
 <style type="text/css">
@@ -20,7 +21,7 @@
 .nav-menu{
 	display: inline-flex;
 	flex-flow: row wrap;
-	width: 830px;
+	width: 800px;
 }
 .menulist{
 	list-style: none;
@@ -80,33 +81,6 @@ li{
 	display: none;
 }
 </style>
-<script type="text/javascript">
-$(document).ready(function () {
-	var england = $('img[name=england]').attr('name');
-	var spain = $('img[name=spain]').attr('name');
-	var germany = $('img[name=germany]').attr('name');
-	var italia = $('img[name=italia]').attr('name');
-	var france = $('img[name=france]').attr('name');
-	var netherland = $('img[name=netherland]').attr('name');
-	var uefa = $('img[name=uefa]').attr('name');
-	$('img[name=england]').attr('src', '${pageContext.request.contextPath}/resources/img/'+england+'.png')
-	$('img[name=spain]').attr('src', '${pageContext.request.contextPath}/resources/img/'+spain+'.png')
-	$('img[name=germany]').attr('src', '${pageContext.request.contextPath}/resources/img/'+germany+'.png')
-	$('img[name=italia]').attr('src', '${pageContext.request.contextPath}/resources/img/'+italia+'.png')
-	$('img[name=france]').attr('src', '${pageContext.request.contextPath}/resources/img/'+france+'.png')
-	$('img[name=netherland]').attr('src', '${pageContext.request.contextPath}/resources/img/'+netherland+'.png')
-	$('img[name=uefa]').attr('src', '${pageContext.request.contextPath}/resources/img/'+uefa+'.png')
-	$('.league').click(function () {
-		$('.leaguelist').removeClass('dis-none');
-		$('.tournamentlist').addClass('dis-none');
-	})
-	$('.tournament').click(function () {
-		$('.tournamentlist').removeClass('dis-none');
-		$('.tournamentlist').css('margin-left','485px');
-		$('.leaguelist').addClass('dis-none');
-	})
-})
-</script>
 </head>
 <body>
 	<nav class=" navbar-expand-sm bg-dark navbar-dark">
@@ -163,36 +137,6 @@ $(document).ready(function () {
 				    </c:if>
 			  	</ul>
 		  	</div>
-	  	</div>
-	  	<div class="container-bottom">
-		  	<ul class="leaguelist dis-none">
-		  		<li class="">
-		  			<a href="<%=request.getContextPath()%>/league?league=프리미어리그"><img alt="x" src="" name="england">프리미어리그</a>
-	  			</li>
-		  		<li class="">
-		  			<a href="<%=request.getContextPath()%>/league?league=라리가"><img alt="x" src="" name="spain">라리가</a>
-	  			</li>
-	  			<li class="">
-		  			<a href="<%=request.getContextPath()%>/league?league=분데스리가"><img alt="x" src="" name="germany">분데스리가</a>
-	  			</li>
-	  			<li class="">
-		  			<a href="<%=request.getContextPath()%>/league?league=세리에A"><img alt="x" src="" name="italia">세리에A</a>
-	  			</li>
-	  			<li class="">
-		  			<a href="<%=request.getContextPath()%>/league?league=리그1"><img alt="x" src="" name="france">리그1</a>
-	  			</li>
-	  			<li class="">
-		  			<a href="<%=request.getContextPath()%>/league?league=에레디비지에"><img alt="x" src="" name="netherland">에레디비지에</a>
-	  			</li>
-		  	</ul>
-		  	<ul class="tournamentlist dis-none">
-		  		<li class="">
-		  			<a href="<%=request.getContextPath()%>/tournament"><img alt="X" src="" name="uefa">챔피언스리그</a>
-	  			</li>
-		  		<li class="">
-		  			<a href="<%=request.getContextPath()%>/tournament"><img alt="X" src="" name="uefa">유로파리그</a>
-	  			</li>
-		  	</ul>
 	  	</div>
 	</nav>
 </body>

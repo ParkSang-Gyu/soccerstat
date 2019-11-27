@@ -24,9 +24,6 @@
 	margin: 0 20px 0 236px;
 	line-height: 35px;
 }
-.identity2{
-	width: 274px;
-}
 .condition{
 	margin: 5px 0 0 290px;
 	font-size: 10px;
@@ -36,9 +33,6 @@
 	margin: 0 20px 0 223px;
 	line-height: 35px;
 }
-.password2{
-	width: 343px;
-}
 .row:nth-child(2) .condition{
 	width: 400px;
 }
@@ -46,8 +40,9 @@
 	margin: 0 20px 0 194px;
 	line-height: 35px;
 }
-.password4{
-	width: 343px;
+.writer1{
+	margin: 0 20px 0 250px;
+	line-height: 35px;
 }
 .name{
 	margin: 0 20px 0 250px;
@@ -91,14 +86,6 @@
 .mail1{
 	margin: 0 20px 0 237px;
 	line-height: 35px;
-}
-.mail2{
-	width: 279px;
-}
-.mail3{
-	margin: 0 8px;
-	font-size: 15px;
-	line-height: 30px;
 }
 .sign{
 	padding-left: 420px;

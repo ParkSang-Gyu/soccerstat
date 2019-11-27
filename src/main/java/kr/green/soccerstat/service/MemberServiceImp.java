@@ -52,7 +52,12 @@ public class MemberServiceImp implements MemberService{
 	public boolean retouch(MemberVO mVo, String oldPw) {
 		if(mVo == null)	
 			return false;
-		if(memberDao.getMember(mVo.getId()).getPw().equals(oldPw)) {
+		MemberVO oVo = memberDao.getMember(mVo.getId());
+		if(passwordEncoder.matches(oldPw, oVo.getPw())) {
+			//회원정보수정에서 입력받은 암호를 암호화 시킴
+			String encodePw = passwordEncoder.encode(mVo.getPw());
+			//회원 정보의 비밀번호를 암호화된 비밀번호로 변경
+			mVo.setPw(encodePw);
 			memberDao.retouch(mVo);
 			return true;
 		}

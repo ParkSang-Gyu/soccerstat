@@ -35,6 +35,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value= {"/"},method = RequestMethod.GET)
 	public ModelAndView mainGet(ModelAndView mv, ScheduleVO sVo, TeamTableVO ttvo, String currentSeason) throws Exception{
+		logger.info("메인화면 진입 성공");
 		currentSeason = "2019-20";
 		
 		ArrayList<ScheduleVO> schedule = dataService.getSchedule(sVo);

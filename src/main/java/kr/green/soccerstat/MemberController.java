@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.green.soccerstat.dao.MemberDAO;
 import kr.green.soccerstat.service.MemberService;
 import kr.green.soccerstat.vo.MemberVO;
 
@@ -29,6 +30,8 @@ public class MemberController {
 	
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	MemberDAO memberDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
@@ -75,6 +78,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public String signinPost(MemberVO mVo) {
+		
 		logger.info("회원가입 진행중"); 
 		if(memberService.signin(mVo)) {
 			logger.info("회원가입 성공"); 
@@ -87,8 +91,8 @@ public class MemberController {
 	@RequestMapping(value ="/confirm")
 	@ResponseBody
 	public Map<Object, Object> idcheck(@RequestBody String id){
-	    Map<Object, Object> map = new HashMap<Object, Object>();
 	    
+		Map<Object, Object> map = new HashMap<Object, Object>();
 	    //변수 id에 저장된 아이디가 회원 아이디인지 아닌지 확인하여 isMember변수에 
 	    //담아 보낸다.
 	    boolean isMember = memberService.isMember(id);
@@ -105,19 +109,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/retouch", method = RequestMethod.POST)
-	public ModelAndView retouchPost(ModelAndView mv, MemberVO mVo, String oldPw) {
-		logger.info("회원정보수정 진행 중");
+	public String retouchPost(MemberVO mVo, String oldPw) {
 		
-	    if(memberService.retouch(mVo,oldPw)) { 
-	    	logger.info("회원정보수정 성공");
-	    	mv.setViewName("/board/list"); 
-	    	return mv; 
-	    }
-	  
-	    mv.setViewName("/member/retouch");
-	  
-	    return mv;
-		 
+		logger.info("회원정보수정 진행 중");
+	    if(memberService.retouch(mVo,oldPw)) {  
+	    	return "redirect:/list";
+	    }else {
+		    logger.info("회원정보수정 실패");
+		    return "redirect:/retouch";
+	    } 
 	}
 
 	@RequestMapping(value= {"/searchId"},method = RequestMethod.GET)

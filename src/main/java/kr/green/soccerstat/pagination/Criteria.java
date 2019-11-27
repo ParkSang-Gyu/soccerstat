@@ -22,10 +22,10 @@ public class Criteria {
 		this.search = search;
 	}
 	
-	//Criteria 디폴트 생성자 : 현재 페이지를 1페이지로, 한 페이지에 15개의 컨텐츠
+	//Criteria 디폴트 생성자 : 현재 페이지를 1페이지로, 한 페이지에 10개의 컨텐츠
 	public Criteria() {
 		this.page = 1;
-		this.perPageNum = 5;
+		this.perPageNum = 10;
 	}
 	
 	//getter and setter
@@ -47,7 +47,7 @@ public class Criteria {
 		/* 한 페이지에 컨텐츠 수를 0이상 100이하로 설정
 		개발자 설정에 따라 100부분을 수정할 수 있음 */
 		if(perPageNum <=0 || perPageNum > 100) {
-			this.perPageNum = 5;
+			this.perPageNum = 10;
 		}
 		else
 			this.perPageNum = perPageNum;

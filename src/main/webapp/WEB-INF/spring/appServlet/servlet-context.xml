@@ -65,8 +65,8 @@
 	    </interceptor>
 		<interceptor>
 			<mapping path="/register"/>
-	        <mapping path="/board/modify"/>
-	        <mapping path="/member/modify"/>
+	        <mapping path="/modify"/>
+	        <mapping path="/retouch"/>
 	        <beans:ref bean="authInterceptor"/>
 		</interceptor>
 		<interceptor>

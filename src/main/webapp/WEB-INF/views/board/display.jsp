@@ -16,20 +16,18 @@
 	</div>
 	<div class="middle">
 		<div class="mid-top">
-			<div class="title">제목</div>
+			<div class="title">${board.title}</div>
 			<div class="info">
 				<ul class="userinfo">
 					<li>${board.writer}</li>
 					<li></li>
 					<li>${board.registered}</li>
 					<li class="float-r">조회 : ${board.views}</li>
-					<li class="float-r">추천 : </li>
 				</ul>
 			</div>
 		</div>
 		<div class="mid-center">
 			<div class="text">${board.contents}</div>
-			<button class="recommend">추천</button>
 		</div>
 	</div>
 	<div class="mid-bottom">

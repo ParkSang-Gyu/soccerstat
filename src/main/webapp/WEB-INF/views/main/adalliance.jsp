@@ -25,7 +25,7 @@ body{
 	<div class="adalliance">
 		<div class="ad">
 			<div style="font-weight: bold;">광고 및 제휴 문의</div><br><br>
-			사커라인과 제휴 및 광고, 이벤트 문의는 아래 이메일 통해 문의해주시기 바랍니다.<br><br>
+			사커스탯과 제휴 및 광고, 이벤트 문의는 아래 이메일 통해 문의해주시기 바랍니다.<br><br>
 			e메일: admin@soccerstat.co.kr
 		</div><br><br>
 		<div class="alliance">

@@ -1,4 +1,12 @@
 @charset "EUC-KR";
+a{
+	color: black;
+	text-decoration: none;
+}
+a:hover{
+	color: black;
+	text-decoration: none;
+}
 h3{
 	margin: 15px 0;
 }

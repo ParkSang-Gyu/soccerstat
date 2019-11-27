@@ -88,7 +88,7 @@
 		      	<c:forEach var="tmp" items="${squad}">
 			      	<tr>
 			        	<td></td>
-		        		<td><a href="<%=request.getContextPath()%>/players?player=${tmp.player}">${tmp.player}</a></td>
+		        		<td><a href="<%=request.getContextPath()%>/player?player=${tmp.player}">${tmp.player}</a></td>
 		        		<td>${tmp.appearance}</td>
 		        		<td>${tmp.goal}</td>
 		        		<td>${tmp.assist}</td>

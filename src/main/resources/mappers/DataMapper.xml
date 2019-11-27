@@ -22,10 +22,10 @@
 	    select * from playerstat where season = #{currentSeason} and league = #{league}
 	</select>
 	<select id="getSortLeague" resultType="kr.green.soccerstat.vo.TeamTableVO">
-	    select * from teamtable where season = #{currentSeason} and league = #{league} order by ${sortData} desc, points desc
+	    select * from teamtable where season = #{currentSeason} and league = #{league} order by #{sortData} desc, points desc
 	</select>
 	<select id="getSortPlayer" resultType="kr.green.soccerstat.vo.PlayerVO">
-	    select * from playerstat where season = #{currentSeason} and league = #{league} order by ${sortP} desc
+	    select * from playerstat where season = #{currentSeason} and league = #{league} order by #{sortP} desc
 	</select>
 	<select id="getTeamInfo" resultType="kr.green.soccerstat.vo.TeamInfoVO">
 	    select * from teaminfo where team = #{team}

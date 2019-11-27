@@ -64,12 +64,13 @@
 	</ul>
 	<form class="search" action="<%=request.getContextPath()%>/list" method="get">
 		<select class="search-sel" name="type">
+			<option value="0">선택</option>
 			<option value="1" <c:if test="${pageMaker.criteria.type == 1}">selected</c:if> >제목</option>
 			<option value="2" <c:if test="${pageMaker.criteria.type == 2}">selected</c:if>>내용</option>
 			<option value="3" <c:if test="${pageMaker.criteria.type == 3}">selected</c:if>>필명</option>
 		</select>
 		<input class="search-inp" name="search" type="text" value="${pageMaker.criteria.search}">
-		<button>검색</button>
+		<button type="submit">검색</button>
 	</form>
 </body>
 </html>

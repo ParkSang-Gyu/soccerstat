@@ -48,8 +48,9 @@ public class BoardController {
 	private String uploadPath;
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public ModelAndView boardListGet(ModelAndView mv, Criteria cri) {
-		cri.setPerPageNum(2);
+	public ModelAndView listGet(ModelAndView mv, Criteria cri) {
+		
+		cri.setPerPageNum(10);
 		ArrayList<BoardVO> boardList = boardService.getBoardList(cri);
 		int totalCount = boardService.getTotalCount(cri);
 		
@@ -57,12 +58,12 @@ public class BoardController {
 		
 		mv.addObject("pageMaker", pm);
 		mv.addObject("list", boardList);
-		
 		mv.setViewName("/board/list");
+		
 		return mv;
 	}
 	@RequestMapping(value="/display", method=RequestMethod.GET)
-	public ModelAndView boardDisplayGet(ModelAndView mv,Integer num) {
+	public ModelAndView displayGet(ModelAndView mv,Integer num) {
 		//조회수 증가
 		boardService.updateViews(num);
 		BoardVO bVo = boardService.getBoard(num);
@@ -70,12 +71,13 @@ public class BoardController {
 		
 		mv.addObject("board", bVo);
 		mv.addObject("files", files);
-		
 		mv.setViewName("/board/display");
+		
 		return mv;
 	}
 	@RequestMapping(value="/modify", method=RequestMethod.GET)
-	public ModelAndView boardModifyGet(ModelAndView mv,Integer num, HttpServletRequest r) {
+	public ModelAndView modifyGet(ModelAndView mv,Integer num, HttpServletRequest r) {
+		
 		if(!boardService.isWriter(num,r)) {
 			mv.setViewName("/board/list");
 			return mv;
@@ -83,12 +85,12 @@ public class BoardController {
 		BoardVO bVo = boardService.getBoard(num);
 		
 		mv.addObject("board", bVo);
-		
 		mv.setViewName("/board/modify");
+		
 		return mv;
 	}
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
-	public String boardModifyPost(Model model,BoardVO bVo, HttpServletRequest r,MultipartFile file2) throws IOException, Exception  {
+	public String modifyPost(Model model,BoardVO bVo, HttpServletRequest r,MultipartFile file2) throws IOException, Exception  {
 		
 		if(file2.getOriginalFilename().length() != 0) {
 			String file = UploadFileUtils.uploadFile(
@@ -114,19 +116,21 @@ public class BoardController {
 		return "redirect:/board/display";
 	}
 	@RequestMapping(value="/register", method=RequestMethod.GET)
-	public ModelAndView boardRegisterGet(ModelAndView mv,MemberVO mVo,HttpServletRequest request) {
+	public ModelAndView registerGet(ModelAndView mv,MemberVO mVo) {
+		
 		MemberVO user = memberService.login(mVo);
 		if(user != null) {
 			mv.addObject("user", user);
 			mv.setViewName("/board/register");
 			return mv;
+		}else {
+			mv.setViewName("/board/list");
+			return mv;
 		}
-		
-		mv.setViewName("/board/list");
-		return mv;
 	}
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String boardRegisterPost(MultipartFile[] file2,BoardVO boardVo) throws IOException, Exception {
+	public String registerPost(MultipartFile[] file2,BoardVO boardVo) throws IOException, Exception {
+		
 		int num = boardService.registerBoard(boardVo);
 		for(MultipartFile tmp : file2)
 			if(tmp.getOriginalFilename().length() != 0) {
@@ -136,23 +140,25 @@ public class BoardController {
 								tmp.getBytes());;
 				boardService.addFile(file,num);
 			}
-		
-		
+
 		return "redirect:/board/list";
 	}
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
-	public ModelAndView boardDeleteGet(ModelAndView mv,Integer num,HttpServletRequest r) {
+	public ModelAndView deleteGet(ModelAndView mv,Integer num,HttpServletRequest r) {
+		
 		if(boardService.isWriter(num,r)) {
 			boardService.deleteBoard(num);
 		}
 		
 		mv.setViewName("/board/list");
+		
 		return mv;
 	}
 	
 	@RequestMapping("/download")
 	public ResponseEntity<byte[]> downloadFile(String fileName)throws Exception{
-	    InputStream in = null;
+	    
+		InputStream in = null;
 	    ResponseEntity<byte[]> entity = null;
 	    try{
 	        HttpHeaders headers = new HttpHeaders();
