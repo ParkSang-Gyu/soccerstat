@@ -102,143 +102,145 @@
 				<div><span>Motm</span></div>
 			</div>
 		</div>
-		<div class="player-box1 display-none">
-			<div class="player-info1">
-				<div class="player-info-top">
-					<div class="player-name"></div>
-					<div class="team-name"></div>
-					<div class="tournament-name"></div>
-				</div>
-				<div class="player-info-bottom">
-					<div class="player-info-left">
-						<img class="p-img" alt="X" src="">
+		<div class="player">
+			<div class="player-box1 display-none">
+				<div class="player-info1">
+					<div class="player-info-top">
+						<div class="player-name"></div>
+						<div class="team-name"></div>
+						<div class="tournament-name"></div>
 					</div>
-					<div class="player-info-right">
-						<div class="player-info-teamimage">
-							<img class="t-img" alt="X" src="">
+					<div class="player-info-bottom">
+						<div class="player-info-left">
+							<img class="p-img" alt="X" src="">
 						</div>
-						<div class="player-info-nationality"></div>
-						<div class="player-info-age"></div>
-						<div class="player-info-position"></div>
-					</div>
-				</div>
-			</div>
-			<div class="player-stat1">
-				<div class="player-stat-box">
-					<div class="apps"></div>
-					<div class="played"></div>
-					<div class="goal"></div>
-					<div class="assist"></div>
-					<div class="yc"></div>
-					<div class="rc"></div>
-					<div class="pass"></div>
-					<div class="rating"></div>
-					<div class="motm"></div>
-				</div>
-			</div>
-		</div>
-		<div class="player-box2 display-none">
-			<div class="player-info2">
-				<div class="player-info-top">
-					<div class="player-name"><strong></strong></div>
-					<div class="team-name"></div>
-					<div class="tournament-name"></div>
-				</div>
-				<div class="player-info-bottom">
-					<div class="player-info-left">
-						<img class="p-img" alt="X" src="">
-					</div>
-					<div class="player-info-right">
-						<div class="player-info-teamimage">
-							<img class="t-img" alt="X" src="">
+						<div class="player-info-right">
+							<div class="player-info-teamimage">
+								<img class="t-img" alt="X" src="">
+							</div>
+							<div class="player-info-nationality"></div>
+							<div class="player-info-age"></div>
+							<div class="player-info-position"></div>
 						</div>
-						<div class="player-info-nationality"></div>
-						<div class="player-info-age"></div>
-						<div class="player-info-position"></div>
+					</div>
+				</div>
+				<div class="player-stat1">
+					<div class="player-stat-box">
+						<div class="apps"></div>
+						<div class="played"></div>
+						<div class="goal"></div>
+						<div class="assist"></div>
+						<div class="yc"></div>
+						<div class="rc"></div>
+						<div class="pass"></div>
+						<div class="rating"></div>
+						<div class="motm"></div>
 					</div>
 				</div>
 			</div>
-			<div class="player-stat2">
-				<div class="player-stat-box">
-					<div class="apps"></div>
-					<div class="played"></div>
-					<div class="goal"></div>
-					<div class="assist"></div>
-					<div class="yc"></div>
-					<div class="rc"></div>
-					<div class="pass"></div>
-					<div class="rating"></div>
-					<div class="motm"></div>
-				</div>
-			</div>
-		</div>
-		<div class="player-box3 display-none">
-			<div class="player-info3">
-				<div class="player-info-top">
-					<div class="player-name"><strong></strong></div>
-					<div class="team-name"></div>
-					<div class="tournament-name"></div>
-				</div>
-				<div class="player-info-bottom">
-					<div class="player-info-left">
-						<img class="p-img" alt="X" src="">
+			<div class="player-box2 display-none">
+				<div class="player-info2">
+					<div class="player-info-top">
+						<div class="player-name"><strong></strong></div>
+						<div class="team-name"></div>
+						<div class="tournament-name"></div>
 					</div>
-					<div class="player-info-right">
-						<div class="player-info-teamimage">
-							<img class="t-img" alt="X" src="">
+					<div class="player-info-bottom">
+						<div class="player-info-left">
+							<img class="p-img" alt="X" src="">
 						</div>
-						<div class="player-info-nationality"></div>
-						<div class="player-info-age"></div>
-						<div class="player-info-position"></div>
-					</div>
-				</div>
-			</div>
-			<div class="player-stat3">
-				<div class="player-stat-box">
-					<div class="apps"></div>
-					<div class="played"></div>
-					<div class="goal"></div>
-					<div class="assist"></div>
-					<div class="yc"></div>
-					<div class="rc"></div>
-					<div class="pass"></div>
-					<div class="rating"></div>
-					<div class="motm"></div>
-				</div>
-			</div>
-		</div>
-		<div class="player-box4 display-none">
-			<div class="player-info4">
-				<div class="player-info-top">
-					<div class="player-name"><strong></strong></div>
-					<div class="team-name"></div>
-					<div class="tournament-name"></div>
-				</div>
-				<div class="player-info-bottom">
-					<div class="player-info-left">
-						<img class="p-img" alt="X" src="">
-					</div>
-					<div class="player-info-right">
-						<div class="player-info-teamimage">
-							<img class="t-img" alt="X" src="">
+						<div class="player-info-right">
+							<div class="player-info-teamimage">
+								<img class="t-img" alt="X" src="">
+							</div>
+							<div class="player-info-nationality"></div>
+							<div class="player-info-age"></div>
+							<div class="player-info-position"></div>
 						</div>
-						<div class="player-info-nationality"></div>
-						<div class="player-info-age"></div>
-						<div class="player-info-position"></div>
+					</div>
+				</div>
+				<div class="player-stat2">
+					<div class="player-stat-box">
+						<div class="apps"></div>
+						<div class="played"></div>
+						<div class="goal"></div>
+						<div class="assist"></div>
+						<div class="yc"></div>
+						<div class="rc"></div>
+						<div class="pass"></div>
+						<div class="rating"></div>
+						<div class="motm"></div>
 					</div>
 				</div>
 			</div>
-			<div class="player-stat4">
-				<div class="player-stat-box">
-					<div class="apps"></div>
-					<div class="played"></div>
-					<div class="goal"></div>
-					<div class="assist"></div>
-					<div class="yc"></div>
-					<div class="rc"></div>
-					<div class="pass"></div>
-					<div class="rating"></div>
-					<div class="motm"></div>
+			<div class="player-box3 display-none">
+				<div class="player-info3">
+					<div class="player-info-top">
+						<div class="player-name"><strong></strong></div>
+						<div class="team-name"></div>
+						<div class="tournament-name"></div>
+					</div>
+					<div class="player-info-bottom">
+						<div class="player-info-left">
+							<img class="p-img" alt="X" src="">
+						</div>
+						<div class="player-info-right">
+							<div class="player-info-teamimage">
+								<img class="t-img" alt="X" src="">
+							</div>
+							<div class="player-info-nationality"></div>
+							<div class="player-info-age"></div>
+							<div class="player-info-position"></div>
+						</div>
+					</div>
+				</div>
+				<div class="player-stat3">
+					<div class="player-stat-box">
+						<div class="apps"></div>
+						<div class="played"></div>
+						<div class="goal"></div>
+						<div class="assist"></div>
+						<div class="yc"></div>
+						<div class="rc"></div>
+						<div class="pass"></div>
+						<div class="rating"></div>
+						<div class="motm"></div>
+					</div>
+				</div>
+			</div>
+			<div class="player-box4 display-none">
+				<div class="player-info4">
+					<div class="player-info-top">
+						<div class="player-name"><strong></strong></div>
+						<div class="team-name"></div>
+						<div class="tournament-name"></div>
+					</div>
+					<div class="player-info-bottom">
+						<div class="player-info-left">
+							<img class="p-img" alt="X" src="">
+						</div>
+						<div class="player-info-right">
+							<div class="player-info-teamimage">
+								<img class="t-img" alt="X" src="">
+							</div>
+							<div class="player-info-nationality"></div>
+							<div class="player-info-age"></div>
+							<div class="player-info-position"></div>
+						</div>
+					</div>
+				</div>
+				<div class="player-stat4">
+					<div class="player-stat-box">
+						<div class="apps"></div>
+						<div class="played"></div>
+						<div class="goal"></div>
+						<div class="assist"></div>
+						<div class="yc"></div>
+						<div class="rc"></div>
+						<div class="pass"></div>
+						<div class="rating"></div>
+						<div class="motm"></div>
+					</div>
 				</div>
 			</div>
 		</div>

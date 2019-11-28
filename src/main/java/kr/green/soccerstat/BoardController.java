@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,11 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.green.soccerstat.pagination.Criteria;
 import kr.green.soccerstat.pagination.PageMaker;
 import kr.green.soccerstat.service.BoardService;
-import kr.green.soccerstat.service.MemberService;
 import kr.green.soccerstat.service.PageMakerService;
 import kr.green.soccerstat.utils.UploadFileUtils;
 import kr.green.soccerstat.vo.BoardVO;
 import kr.green.soccerstat.vo.FileVO;
 import kr.green.soccerstat.vo.MemberVO;
-
 
 /**
  * Handles requests for the application home page.
@@ -40,8 +39,6 @@ public class BoardController {
 	
 	@Autowired
 	BoardService boardService;
-	@Autowired
-	MemberService memberService;
 	@Autowired
 	PageMakerService pageMakerService;
 	@Resource
@@ -62,6 +59,7 @@ public class BoardController {
 		
 		return mv;
 	}
+	
 	@RequestMapping(value="/display", method=RequestMethod.GET)
 	public ModelAndView displayGet(ModelAndView mv,Integer num) {
 		//조회수 증가
@@ -75,6 +73,7 @@ public class BoardController {
 		
 		return mv;
 	}
+	
 	@RequestMapping(value="/modify", method=RequestMethod.GET)
 	public ModelAndView modifyGet(ModelAndView mv,Integer num, HttpServletRequest r) {
 		
@@ -89,6 +88,7 @@ public class BoardController {
 		
 		return mv;
 	}
+	
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
 	public String modifyPost(Model model,BoardVO bVo, HttpServletRequest r,MultipartFile file2) throws IOException, Exception  {
 		
@@ -115,24 +115,27 @@ public class BoardController {
 		
 		return "redirect:/board/display";
 	}
+	
 	@RequestMapping(value="/register", method=RequestMethod.GET)
-	public ModelAndView registerGet(ModelAndView mv,MemberVO mVo) {
+	public ModelAndView registerGet(ModelAndView mv,HttpServletRequest request) {
 		
-		MemberVO user = memberService.login(mVo);
+		HttpSession session = request.getSession();
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		mv.addObject("user", user);
 		if(user != null) {
-			mv.addObject("user", user);
 			mv.setViewName("/board/register");
 			return mv;
 		}else {
-			mv.setViewName("/board/list");
+			mv.setViewName("/member/login");
 			return mv;
 		}
 	}
+	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String registerPost(MultipartFile[] file2,BoardVO boardVo) throws IOException, Exception {
+	public String registerPost(MultipartFile[] file2,BoardVO boardVo,HttpServletRequest request) throws IOException, Exception {
 		
 		int num = boardService.registerBoard(boardVo);
-		for(MultipartFile tmp : file2)
+		for(MultipartFile tmp : file2) {
 			if(tmp.getOriginalFilename().length() != 0) {
 				String file = UploadFileUtils.uploadFile(
 								uploadPath, 
@@ -140,9 +143,11 @@ public class BoardController {
 								tmp.getBytes());;
 				boardService.addFile(file,num);
 			}
-
+		}
+		
 		return "redirect:/board/list";
 	}
+	
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
 	public ModelAndView deleteGet(ModelAndView mv,Integer num,HttpServletRequest r) {
 		

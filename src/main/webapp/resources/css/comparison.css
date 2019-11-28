@@ -70,6 +70,9 @@ i{
     margin-right: 2px;
     border: 1px solid gray;
 }
+.player{
+	display: inline-block;
+}
 #comparisonTable{
 	font-weight: bold;
     width: 100%;
@@ -88,6 +91,7 @@ i{
 	display: inline-block;
     width: 260px;
     padding-right: 1px;
+    float: left;
 }
 .player-info{
 	text-align: center;
@@ -145,6 +149,7 @@ i{
 	width: 1140px;
 	margin-top: 10px;
 	border: 1px solid gray;
+	float: left;
 }
 .stat-explanation th{
 	width: 380px;

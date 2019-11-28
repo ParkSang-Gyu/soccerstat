@@ -1,0 +1,80 @@
+@charset "EUC-KR";
+.write{
+	font-size: 20px;
+	margin: 15px 0;
+}
+.top{
+	height: 60px;
+}
+.top div{
+	display: inline-block;
+	height: 30px;
+	border-top: 1px solid #dee2e6;
+}
+.writer{
+	width: 100px;
+	text-align: center;
+	background-color: #f8f9fa;
+	float: left;
+	line-height: 28px;
+}
+.writer1{
+	width: 1008px;
+	float: left;
+	line-height: 28px;
+	padding-left: 3px;
+}
+.writer,.writer1:after{
+	clear: both;
+	content: "";
+	display: block;
+}
+.title{
+	width: 100px;
+	text-align: center;
+	background-color: #f8f9fa;
+	float: left;
+	border-bottom: 1px solid #dee2e6;
+	line-height: 28px;
+}
+.title1{
+	width: 1008px;
+	float: left;
+	border-bottom: 1px solid #dee2e6;
+}
+.title,.title1:after{
+	clear: both;
+	content: "";
+	display: block;
+}
+input{
+	width: 1000px;
+	margin: 3px 0 0 3px;
+}
+.middle{
+	margin-bottom: 50px;
+}
+form{
+	text-align: center;
+}
+.form-group{
+	margin-bottom: 0;
+}
+form>div:nth-child(2){
+	text-align: left;
+	margin-bottom: 10px;
+}
+button{
+	margin: 5 0 5 5px;
+	padding: 5 15px;
+	width: 80px;
+	float: right;
+}
+button:after{
+	clear: both;
+	content: "";
+	display: block;
+}
+.note-editing-area{
+	text-align: left;
+}
