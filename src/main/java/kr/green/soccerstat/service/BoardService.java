@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import kr.green.soccerstat.pagination.Criteria;
 import kr.green.soccerstat.vo.BoardVO;
 import kr.green.soccerstat.vo.FileVO;
+import kr.green.soccerstat.vo.MemberVO;
+import kr.green.soccerstat.vo.ReplyVO;
 
 public interface BoardService {
 
@@ -35,5 +37,9 @@ public interface BoardService {
 	void addFile(String file, int num);
 
 	ArrayList<FileVO> getFiles(Integer num);
+
+	void getRegisterReply(Integer num, ReplyVO rVo, MemberVO mVo);
+
+	ArrayList<ReplyVO> getReply(Integer num);
 
 }

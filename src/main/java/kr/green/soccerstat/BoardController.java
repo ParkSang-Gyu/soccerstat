@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -30,6 +32,7 @@ import kr.green.soccerstat.utils.UploadFileUtils;
 import kr.green.soccerstat.vo.BoardVO;
 import kr.green.soccerstat.vo.FileVO;
 import kr.green.soccerstat.vo.MemberVO;
+import kr.green.soccerstat.vo.ReplyVO;
 
 /**
  * Handles requests for the application home page.
@@ -44,8 +47,15 @@ public class BoardController {
 	@Resource
 	private String uploadPath;
 	
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public ModelAndView listGet(ModelAndView mv, Criteria cri) {
+	public ModelAndView listGet(ModelAndView mv, Criteria cri, Integer num, HttpServletRequest r) {
+		
+		if(boardService.isWriter(num,r)) {
+			boardService.deleteBoard(num);
+			logger.info("삭제 성공");
+		}
 		
 		cri.setPerPageNum(10);
 		ArrayList<BoardVO> boardList = boardService.getBoardList(cri);
@@ -55,6 +65,7 @@ public class BoardController {
 		
 		mv.addObject("pageMaker", pm);
 		mv.addObject("list", boardList);
+		
 		mv.setViewName("/board/list");
 		
 		return mv;
@@ -62,13 +73,35 @@ public class BoardController {
 	
 	@RequestMapping(value="/display", method=RequestMethod.GET)
 	public ModelAndView displayGet(ModelAndView mv,Integer num) {
+		
 		//조회수 증가
 		boardService.updateViews(num);
 		BoardVO bVo = boardService.getBoard(num);
 		ArrayList<FileVO> files = boardService.getFiles(num);
+		//ArrayList<ReplyVO> reply = boardService.getReply(num);
 		
 		mv.addObject("board", bVo);
 		mv.addObject("files", files);
+		//mv.addObject("reply", reply);
+		mv.setViewName("/board/display");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/display", method=RequestMethod.POST)
+	public ModelAndView displayPost(ModelAndView mv,HttpServletRequest request,Integer num,ReplyVO rVo) {
+		
+		HttpSession session = request.getSession();
+		MemberVO mVo = (MemberVO)session.getAttribute("user");
+		boardService.getRegisterReply(num,rVo,mVo);
+		logger.info("댓글달기 성공");
+		BoardVO bVo = boardService.getBoard(num);
+		ArrayList<FileVO> files = boardService.getFiles(num);
+		//ArrayList<ReplyVO> reply = boardService.getReply(num);
+		
+		mv.addObject("board", bVo);
+		mv.addObject("files", files);
+		//mv.addObject("reply", reply);
 		mv.setViewName("/board/display");
 		
 		return mv;
@@ -113,51 +146,36 @@ public class BoardController {
 		
 		model.addAttribute("num", bVo.getNum());
 		
-		return "redirect:/board/display";
+		return "redirect:/display";
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public ModelAndView registerGet(ModelAndView mv,HttpServletRequest request) {
 		
-		HttpSession session = request.getSession();
-		MemberVO user = (MemberVO)session.getAttribute("user");
+		HttpSession session = request.getSession(); 
+		MemberVO user = (MemberVO)session.getAttribute("user"); 
 		mv.addObject("user", user);
 		if(user != null) {
 			mv.setViewName("/board/register");
-			return mv;
-		}else {
-			mv.setViewName("/member/login");
-			return mv;
+			return mv; 
 		}
+		mv.setViewName("/member/login");
+		return mv;
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String registerPost(MultipartFile[] file2,BoardVO boardVo,HttpServletRequest request) throws IOException, Exception {
-		
+		System.out.println(boardVo);
+		boardVo.getContent().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
 		int num = boardService.registerBoard(boardVo);
-		for(MultipartFile tmp : file2) {
-			if(tmp.getOriginalFilename().length() != 0) {
-				String file = UploadFileUtils.uploadFile(
-								uploadPath, 
-								tmp.getOriginalFilename(),
-								tmp.getBytes());;
-				boardService.addFile(file,num);
-			}
-		}
+		//for(MultipartFile tmp : file2) { 
+		//	if(tmp.getOriginalFilename().length() != 0) { 
+		//		String file = UploadFileUtils.uploadFile( uploadPath,tmp.getOriginalFilename(), tmp.getBytes());; 
+		//		boardService.addFile(file,num);
+		//	} 
+		//}
 		
-		return "redirect:/board/list";
-	}
-	
-	@RequestMapping(value="/delete", method=RequestMethod.GET)
-	public ModelAndView deleteGet(ModelAndView mv,Integer num,HttpServletRequest r) {
-		
-		if(boardService.isWriter(num,r)) {
-			boardService.deleteBoard(num);
-		}
-		
-		mv.setViewName("/board/list");
-		
-		return mv;
+		return "redirect:/list";
 	}
 	
 	@RequestMapping("/download")

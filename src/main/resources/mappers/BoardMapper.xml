@@ -9,7 +9,7 @@
 	    		AND title like concat('%',#{search},'%')
 	  		</if>
 	  		<if test="type == 2">
-	    		AND contents like concat('%',#{search},'%')
+	    		AND content like concat('%',#{search},'%')
 	  		</if>
 	  		<if test="type == 3">
 	    		AND writer like concat('%',#{search},'%')
@@ -27,14 +27,14 @@
   		update board 
   		set 
   			title = #{title},
-  			contents = #{contents},
+  			content = #{content},
 	  		file = #{file},
 	  		views = #{views}
 	 		where num = #{num}
     </update>
     <insert id="registerBoard">
-  		insert into board(title,contents,writer,registered) 
-  		values(#{title},#{contents},#{writer},#{registered});
+  		insert into board(title,content,writer,id,registered) 
+  		values(#{title},#{content},#{writer},#{id},#{registered});
     </insert>
     <update id="deleteBoard">
   		update board 
@@ -48,7 +48,7 @@
    			AND title like concat('%',#{search},'%')
  		</if>
  		<if test="type == 2">
-   			AND contents like concat('%',#{search},'%')
+   			AND content like concat('%',#{search},'%')
  		</if>
  		<if test="type == 3">
    			AND writer like concat('%',#{search},'%')
@@ -60,7 +60,7 @@
    			AND title like concat('%',#{search},'%')
  		</if>
  		<if test="type == 2">
-   			AND contents like concat('%',#{search},'%')
+   			AND content like concat('%',#{search},'%')
  		</if>
  		<if test="type == 3">
    			AND writer like concat('%',#{search},'%')
@@ -72,7 +72,7 @@
     		AND title like concat('%',#{search},'%')
   		</if>
   		<if test="type == 2">
-    		AND contents like concat('%',#{search},'%')
+    		AND content like concat('%',#{search},'%')
   		</if>
   		<if test="type == 3">
     		AND writer like concat('%',#{search},'%')
@@ -91,5 +91,12 @@
     </select>
     <select id="getMaxBoardNum" resultType="int">
   		select max(num) from board;
+    </select>
+    <insert id="insertReply">
+  		insert into reply(board_num,content,writer,id,registered) 
+  		values(#{num},#{rVo.content},#{mVo.writer},#{mVo.id},#{rVo.registered})
+    </insert>
+    <select id="getReplyList" resultType="kr.green.soccerstat.vo.ReplyVO">
+  		select * from reply where board_num = #{num} and valid = 'I'
     </select>
 </mapper>

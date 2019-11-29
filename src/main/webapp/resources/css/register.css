@@ -3,13 +3,11 @@
 	font-size: 20px;
 	margin: 15px 0;
 }
-.top{
-	height: 60px;
+.middle{
+	margin-bottom: 50px;
 }
-.top div{
-	display: inline-block;
-	height: 30px;
-	border-top: 1px solid #dee2e6;
+.form-group{
+	margin-bottom: 0;
 }
 .writer{
 	width: 100px;
@@ -17,54 +15,47 @@
 	background-color: #f8f9fa;
 	float: left;
 	line-height: 28px;
+	margin-bottom: 0;
+	border-top: 1px solid #dee2e6;
 }
-.writer1{
-	width: 1008px;
+#writer{
+	width: 1009px;
 	float: left;
-	line-height: 28px;
 	padding-left: 3px;
-}
-.writer,.writer1:after{
-	clear: both;
-	content: "";
-	display: block;
+	line-height: 28px;
+	border: none;
+	border-top: 1px solid #dee2e6;
 }
 .title{
 	width: 100px;
 	text-align: center;
 	background-color: #f8f9fa;
 	float: left;
-	border-bottom: 1px solid #dee2e6;
 	line-height: 28px;
-}
-.title1{
-	width: 1008px;
-	float: left;
+	margin-bottom: 0;
+	border-top: 1px solid #dee2e6;
 	border-bottom: 1px solid #dee2e6;
 }
-.title,.title1:after{
-	clear: both;
-	content: "";
-	display: block;
+#title{
+	width: 1009px;
+	float: left;
+	padding-left: 3px;
+	line-height: 28px;
+	border: none;
+	border-top: 1px solid #dee2e6;
+	border-bottom: 1px solid #dee2e6;
 }
-input{
-	width: 1000px;
-	margin: 3px 0 0 3px;
+#summernote{
+	height: 500px;
+	border-radius: 0;
 }
-.middle{
-	margin-bottom: 50px;
-}
-form{
+form div:nth-child(2){
 	text-align: center;
 }
-.form-group{
-	margin-bottom: 0;
-}
-form>div:nth-child(2){
+.note-editing-area{
 	text-align: left;
-	margin-bottom: 10px;
 }
-button{
+a button,form>button{
 	margin: 5 0 5 5px;
 	padding: 5 15px;
 	width: 80px;
@@ -74,7 +65,4 @@ button:after{
 	clear: both;
 	content: "";
 	display: block;
-}
-.note-editing-area{
-	text-align: left;
 }

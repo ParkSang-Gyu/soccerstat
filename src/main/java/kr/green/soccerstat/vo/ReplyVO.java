@@ -4,35 +4,27 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class BoardVO {
+public class ReplyVO {
 
 	private int num;
-	private String title;
+	private int board_num;
 	private String content;
 	private String writer;
 	private String id;
 	private Date registered;
-	private String file;
-	private int views;
 	private String valid;
 	
-	public String getValid() {
-		return valid;
-	}
-	public void setValid(String valid) {
-		this.valid = valid;
-	}
 	public int getNum() {
 		return num;
 	}
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public String getTitle() {
-		return title;
+	public int getBoard_num() {
+		return board_num;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setBoard_num(int board_num) {
+		this.board_num = board_num;
 	}
 	public String getContent() {
 		return content;
@@ -69,32 +61,17 @@ public class BoardVO {
 			e.printStackTrace();
 		}
 	}
-	public String getFile(){
-		return file;
+	public String getValid() {
+		return valid;
 	}
-	public String getFileName() {
-		//UUID가 제거되도록 코드를 작성
-		//c52c5637-b875-41fe-a1ed-d24cf6caad2c_다운로드.jpg
-		//=>다운로드.jpg
-		if(file == null)
-			return "";
-		int index = file.indexOf("_");
-		return file.substring(index+1);
+	public void setValid(String valid) {
+		this.valid = valid;
 	}
-	public void setFile(String file) {
-		this.file = file;
-	}
-	public int getViews() {
-		return views;
-	}
-	public void setViews(int views) {
-		this.views = views;
-	}
-	
 	@Override
 	public String toString() {
-		return "BoardVO [num=" + num + ", title=" + title + ", content=" + content + ", writer=" + writer + ", id="
-				+ id + ", registered=" + registered + ", file=" + file + ", views=" + views + ", valid=" + valid + "]";
+		return "ReplyVO [num=" + num + ", board_num=" + board_num + ", content=" + content + ", writer=" + writer
+				+ ", id=" + id + ", registered=" + registered + ", valid=" + valid + "]";
 	}
-
+	
+	
 }
