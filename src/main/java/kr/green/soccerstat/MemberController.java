@@ -100,6 +100,17 @@ public class MemberController {
 	    return map;
 	}
 	
+	@RequestMapping(value ="/writerConfirm")
+	@ResponseBody
+	public Map<Object, Object> writercheck(@RequestBody String writer){
+	    
+		Map<Object, Object> map = new HashMap<Object, Object>();
+	    //변수 writer에 저장된 필명이 회원인지 아닌지 확인하여 isMember변수에 담아 보낸다.
+	    boolean isWriter = memberService.isWriter(writer);
+	    map.put("isWriter", isWriter);
+	    return map;
+	}
+	
 	@RequestMapping(value= {"/retouch"},method = RequestMethod.GET)
 	public ModelAndView retouchGet(ModelAndView mv) throws Exception{
 		

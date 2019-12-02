@@ -17,7 +17,7 @@ public interface BoardService {
 	BoardVO getBoard(Integer num);
 
 	void updateViews(Integer num);
-
+	
 	void updateBoard(BoardVO bVo, HttpServletRequest r);
 
 	int registerBoard(BoardVO boardVo);
@@ -38,8 +38,11 @@ public interface BoardService {
 
 	ArrayList<FileVO> getFiles(Integer num);
 
-	void getRegisterReply(Integer num, ReplyVO rVo, MemberVO mVo);
+	void insertReply(Integer num, ReplyVO rVo, MemberVO mVo);
 
 	ArrayList<ReplyVO> getReply(Integer num);
+	
+	void updateRecommend(Integer replyNum);
+	
 
 }

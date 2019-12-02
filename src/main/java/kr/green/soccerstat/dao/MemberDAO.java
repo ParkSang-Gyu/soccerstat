@@ -9,6 +9,8 @@ public interface MemberDAO {
 
 	MemberVO getMember(String id);
 
+	MemberVO getWriter(String writer);
+	
 	void signin(MemberVO mVo);
 	
 	void retouch(MemberVO mVo);
@@ -18,6 +20,7 @@ public interface MemberDAO {
 	int getTotalCount();
 
 	void updateAuthority(MemberVO mVo);
+
 
 	
 }

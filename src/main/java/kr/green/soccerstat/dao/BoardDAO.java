@@ -20,7 +20,7 @@ public interface BoardDAO {
 
 	void updateBoard(BoardVO tmp);
 
-	void registerBoard(BoardVO boardVo);
+	ArrayList<ReplyVO> getReplyList(Integer num);
 
 	void deleteBoard(Integer num);
 
@@ -38,8 +38,12 @@ public interface BoardDAO {
 
 	int getMaxBoardNum();
 
+	void registerBoard(BoardVO boardVo);
+	
 	void insertReply(@Param("num")Integer num, @Param("rVo")ReplyVO rVo, @Param("mVo")MemberVO mVo);
 
-	ArrayList<ReplyVO> getReplyList(Integer num);
+	void updateRecommend(ReplyVO tmp);
+	
+	ReplyVO getReply(Integer replyNum);
 
 }

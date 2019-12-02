@@ -54,10 +54,14 @@
 	border: 1px solid #343a40;
 	margin: 10px 0 15px;;
 }
+.bottom ul{
+	border-top: 1px solid #343a40;
+	border-bottom: 1px solid #343a40;
+	margin-bottom: 3px;
+}
 .comment{
 	margin: 10px 10px 0 10px;
 	padding-bottom: 10px;
-	border-bottom: 1px solid #343a40;
 }
 .comment-top{
 	border-bottom: 1px solid #343a40; 
@@ -67,6 +71,18 @@
 }
 .comment-bottom{
 	margin-top: 5px;
+	padding-bottom: 10px;
+}
+.comment-bottom button{
+	background-color: #dee2e6;
+	color: #343a40;
+	border: none;
+}
+.btn{
+	background-color: white;
+	color: #343a40;
+	padding: 0;
+	font-weight: bold;
 }
 .reply{
 	margin: 10px 10px 0 10px;
@@ -78,7 +94,7 @@
 	width: 195px;
 	height: 100px;
 }
-.userinfo li{
+ul li{
 	font-weight: bold;
 	display: inline-block;
 }

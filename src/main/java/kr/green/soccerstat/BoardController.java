@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +23,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,6 +36,7 @@ import kr.green.soccerstat.vo.BoardVO;
 import kr.green.soccerstat.vo.FileVO;
 import kr.green.soccerstat.vo.MemberVO;
 import kr.green.soccerstat.vo.ReplyVO;
+import kr.green.soccerstat.vo.ScheduleVO;
 
 /**
  * Handles requests for the application home page.
@@ -78,11 +82,11 @@ public class BoardController {
 		boardService.updateViews(num);
 		BoardVO bVo = boardService.getBoard(num);
 		ArrayList<FileVO> files = boardService.getFiles(num);
-		//ArrayList<ReplyVO> reply = boardService.getReply(num);
+		ArrayList<ReplyVO> reply = boardService.getReply(num);
 		
 		mv.addObject("board", bVo);
 		mv.addObject("files", files);
-		//mv.addObject("reply", reply);
+		mv.addObject("reply", reply);
 		mv.setViewName("/board/display");
 		
 		return mv;
@@ -93,18 +97,36 @@ public class BoardController {
 		
 		HttpSession session = request.getSession();
 		MemberVO mVo = (MemberVO)session.getAttribute("user");
-		boardService.getRegisterReply(num,rVo,mVo);
+		boardService.insertReply(num,rVo,mVo);
 		logger.info("댓글달기 성공");
 		BoardVO bVo = boardService.getBoard(num);
 		ArrayList<FileVO> files = boardService.getFiles(num);
-		//ArrayList<ReplyVO> reply = boardService.getReply(num);
+		ArrayList<ReplyVO> reply = boardService.getReply(num);
 		
 		mv.addObject("board", bVo);
 		mv.addObject("files", files);
-		//mv.addObject("reply", reply);
+		mv.addObject("reply", reply);
 		mv.setViewName("/board/display");
 		
 		return mv;
+	}
+	
+	@RequestMapping(value = "/display/updateRecommend", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<Object, Object> updateRecommendPost(Integer replyNum,Integer num) {
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		System.out.println(num);
+		System.out.println(replyNum);
+		boardService.updateRecommend(replyNum);
+		BoardVO bVo = boardService.getBoard(num);
+		ArrayList<FileVO> files = boardService.getFiles(num);
+		ArrayList<ReplyVO> reply = boardService.getReply(num);
+ 
+		map.put("board", bVo);
+		map.put("files", files);
+		map.put("reply", reply);
+		System.out.println(reply);
+		return map;
 	}
 	
 	@RequestMapping(value="/modify", method=RequestMethod.GET)

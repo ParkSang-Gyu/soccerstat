@@ -21,7 +21,7 @@
   		select * from board where num = #{num} and valid = 'I'
     </select>
     <update id="updateViews">
-  		update board set views=views+1 where num = #{num}
+  		update board set views = views+1 where num = #{num}
     </update>
     <update id="updateBoard">
   		update board 
@@ -99,4 +99,10 @@
     <select id="getReplyList" resultType="kr.green.soccerstat.vo.ReplyVO">
   		select * from reply where board_num = #{num} and valid = 'I'
     </select>
+    <select id="getReply" resultType="kr.green.soccerstat.vo.ReplyVO">
+  		select * from reply where num = #{replyNum} and valid = 'I'
+    </select>
+    <update id="updateRecommend">
+  		update reply set recommend = recommend+1 where num = #{replyNum}
+    </update>
 </mapper>

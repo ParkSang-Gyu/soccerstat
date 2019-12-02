@@ -18,7 +18,25 @@ $(document).ready(function () {
 	$('.submit').click(function () {
 		location.href = '<%=request.getContextPath()%>/display?'+$('input[name=board_num]').val();
 	})
-})
+	$('.recommend').click(function () {
+		var num = $('.btn').val();
+		var replyNum = $(this).siblings('input[name=replyNum]').val();
+		$.ajax({
+			type:'POST',
+			data:{'replyNum' : replyNum, 'num' : num},
+			url:"display/updateRecommend",
+			success : function (data){
+				for(var i = 0; i < data.reply.length; i++){
+					var str = '추천 : ' + data.reply[i].recommend;
+					$('.cnt:nth-child('+(i+1)+')').html(str);
+				}
+			},
+			error:function(request,status,error){
+	            console.log( request.responseText ); // 실패 시 처리
+			}
+		});
+	});
+});
 </script>
 </head>
 <body>
@@ -31,11 +49,12 @@ $(document).ready(function () {
 		<div class="mid-top">
 			<div class="title">${board.title}</div>
 			<div class="info">
-				<ul class="userinfo">
+				<ul>
 					<li>${board.writer}</li>
 					<li>${board.id}</li>
 					<li>${board.registered}</li>
 					<li class="float-r">조회 : ${board.views}</li>
+					<li class="float-r">추천 : ${board.recommend}</li>
 				</ul>
 			</div>
 		</div>
@@ -56,18 +75,22 @@ $(document).ready(function () {
 	<div class="bottom">
 		<div class="comment">
 			<div class="comment-top">
-				<ul class="userinfo">
-					<li>${reply.writer}</li>
-					<li>${reply.id}</li>
-					<li class="float-r">${reply.registered}</li>
-				</ul>
-			</div>
-			<div class="comment-mid">
-				<div class="comment-txt">${reply.content}</div>
-			</div>
-			<div class="comment-bottom">
-				<button>댓글의 답글달기</button>
-				<button class="float-r">추천</button>
+				<c:forEach var="tmp" items="${reply}">
+					<ul class="userinfo" >
+						<li>${tmp.writer}</li>
+						<li>${tmp.id}</li>
+						<li class="float-r" style="padding-top: 2px;"><button class="btn cnt" value="${board.num}">추천 : ${tmp.recommend}</button></li>
+						<li class="float-r">${tmp.registered}</li>
+					</ul>
+					<div class="comment-mid">
+						<div class="comment-txt">${tmp.content}</div>
+					</div>
+					<div class="comment-bottom">
+						<button>댓글의 답글달기</button>
+						<button class="float-r recommend">추천</button>
+						<input type="hidden" value="${tmp.num}" name="replyNum">
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 		<div class="reply">

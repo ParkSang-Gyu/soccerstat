@@ -33,7 +33,7 @@
 			<div class="row">
 				<label class="writer1">필명</label>
 				<input placeholder="필명을 입력하세요" name="writer" id="writer">
-				<button id="writerConfirm">필명 중복확인</button>
+				<button type="button" id="writerConfirm">필명 중복확인</button>
 				<div class="condition">특수문자, 기호, 띄어쓰기 불가능 (최대 12자)</div>
 			</div>
 			<div class="row">

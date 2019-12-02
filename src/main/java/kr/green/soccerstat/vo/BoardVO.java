@@ -14,6 +14,7 @@ public class BoardVO {
 	private Date registered;
 	private String file;
 	private int views;
+	private int recommend;
 	private String valid;
 	
 	public String getValid() {
@@ -90,11 +91,19 @@ public class BoardVO {
 	public void setViews(int views) {
 		this.views = views;
 	}
-	
+	public int getRecommend() {
+		return recommend;
+	}
+	public void setRecommend(int recommend) {
+		this.recommend = recommend;
+	}
 	@Override
 	public String toString() {
-		return "BoardVO [num=" + num + ", title=" + title + ", content=" + content + ", writer=" + writer + ", id="
-				+ id + ", registered=" + registered + ", file=" + file + ", views=" + views + ", valid=" + valid + "]";
+		return "BoardVO [num=" + num + ", title=" + title + ", content=" + content + ", writer=" + writer + ", id=" + id
+				+ ", registered=" + registered + ", file=" + file + ", views=" + views + ", recommend=" + recommend
+				+ ", valid=" + valid + "]";
 	}
+	
+	
 
 }

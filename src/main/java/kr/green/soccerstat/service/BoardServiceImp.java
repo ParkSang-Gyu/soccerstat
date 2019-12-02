@@ -45,7 +45,7 @@ public class BoardServiceImp implements BoardService{
 			boardDao.updateBoard(tmp);
 		}
 	}
-
+	
 	@Override
 	public void updateBoard(BoardVO bVo, HttpServletRequest r) {
 		
@@ -119,7 +119,7 @@ public class BoardServiceImp implements BoardService{
 	}
 
 	@Override
-	public void getRegisterReply(Integer num, ReplyVO rVo, MemberVO mVo) {
+	public void insertReply(Integer num, ReplyVO rVo, MemberVO mVo) {
 		
 		boardDao.insertReply(num,rVo,mVo);	
 	}
@@ -129,5 +129,19 @@ public class BoardServiceImp implements BoardService{
 		
 		return boardDao.getReplyList(num);
 	}
+
+	@Override
+	public void updateRecommend(Integer replyNum) {
+		ReplyVO tmp = boardDao.getReply(replyNum);
+		System.out.println(tmp);
+		if(tmp != null) {
+			int oldRecommend = tmp.getRecommend();
+			tmp.setRecommend(oldRecommend+1);
+			System.out.println(tmp.getRecommend());
+			boardDao.updateRecommend(tmp);
+			
+		}
+	}
+	
 
 }

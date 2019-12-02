@@ -14,6 +14,8 @@ public interface MemberService {
 	public boolean retouch(MemberVO mVo, String oldPw);
 	
 	public boolean isMember(String id);
+	
+	public boolean isWriter(String writer);
 
 	public ArrayList<MemberVO> getAllMember(Criteria cri);
 
@@ -21,7 +23,6 @@ public interface MemberService {
 
 	public void updateAuthority(MemberVO mVo);
 
-	
-	
+
 
 }

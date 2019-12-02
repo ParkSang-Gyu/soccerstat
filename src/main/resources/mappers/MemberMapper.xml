@@ -6,6 +6,9 @@
 	<select id="getMember" resultType="kr.green.soccerstat.vo.MemberVO">
 	    select * from soccerstat.member where id = #{id}
 	</select>
+	<select id="getWriter" resultType="kr.green.soccerstat.vo.MemberVO">
+	    select * from soccerstat.member where writer = #{writer}
+	</select>
 	<insert id="signin">
 	  	insert into soccerstat.member(id,pw,writer,name,gender,hp,email)
 	  		values(#{id},#{pw},#{writer},#{name},#{gender},#{hp},#{email})

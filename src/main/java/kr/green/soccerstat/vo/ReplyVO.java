@@ -12,6 +12,7 @@ public class ReplyVO {
 	private String writer;
 	private String id;
 	private Date registered;
+	private int recommend;
 	private String valid;
 	
 	public int getNum() {
@@ -19,6 +20,9 @@ public class ReplyVO {
 	}
 	public void setNum(int num) {
 		this.num = num;
+	}
+	public int getReplyNum() {
+		return num;
 	}
 	public int getBoard_num() {
 		return board_num;
@@ -61,16 +65,23 @@ public class ReplyVO {
 			e.printStackTrace();
 		}
 	}
+	public int getRecommend() {
+		return recommend;
+	}
+	public void setRecommend(int recommend) {
+		this.recommend = recommend;
+	}
 	public String getValid() {
 		return valid;
 	}
 	public void setValid(String valid) {
 		this.valid = valid;
 	}
+	
 	@Override
 	public String toString() {
 		return "ReplyVO [num=" + num + ", board_num=" + board_num + ", content=" + content + ", writer=" + writer
-				+ ", id=" + id + ", registered=" + registered + ", valid=" + valid + "]";
+				+ ", id=" + id + ", registered=" + registered + ", recommend=" + recommend + ", valid=" + valid + "]";
 	}
 	
 	

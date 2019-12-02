@@ -73,6 +73,14 @@ public class MemberServiceImp implements MemberService{
 	}
 
 	@Override
+	public boolean isWriter(String writer) {
+		if(memberDao.getWriter(writer) == null) {
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
 	public ArrayList<MemberVO> getAllMember(Criteria cri) {
 		return memberDao.getAllMember(cri);
 	}
@@ -87,5 +95,5 @@ public class MemberServiceImp implements MemberService{
 		memberDao.updateAuthority(mVo);
 	}
 
-	
+
 }
