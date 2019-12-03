@@ -40,7 +40,7 @@ public interface BoardService {
 
 	void insertReply(Integer num, ReplyVO rVo, MemberVO mVo);
 
-	ArrayList<ReplyVO> getReply(Integer num);
+	ArrayList<ReplyVO> getReplyList(Integer num);
 	
 	void updateRecommend(Integer replyNum);
 	

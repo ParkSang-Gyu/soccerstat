@@ -21,6 +21,9 @@
 	<select id="getPlayerStat" resultType="kr.green.soccerstat.vo.PlayerVO">
 	    select * from playerstat where season = #{currentSeason} and league = #{league}
 	</select>
+	<select id="getLeagueSchedule" resultType="kr.green.soccerstat.vo.ScheduleVO">
+	    select date,time,status,league,home,score,away,homeG,awayG from schedule where year = #{year} and date = #{cDate} and league = #{league}
+	</select>
 	<select id="getSortLeague" resultType="kr.green.soccerstat.vo.TeamTableVO">
 	    select * from teamtable where season = #{currentSeason} and league = #{league} order by #{sortData} desc, points desc
 	</select>

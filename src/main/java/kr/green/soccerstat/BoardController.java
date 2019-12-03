@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.green.soccerstat.dao.BoardDAO;
 import kr.green.soccerstat.pagination.Criteria;
 import kr.green.soccerstat.pagination.PageMaker;
 import kr.green.soccerstat.service.BoardService;
@@ -36,7 +37,6 @@ import kr.green.soccerstat.vo.BoardVO;
 import kr.green.soccerstat.vo.FileVO;
 import kr.green.soccerstat.vo.MemberVO;
 import kr.green.soccerstat.vo.ReplyVO;
-import kr.green.soccerstat.vo.ScheduleVO;
 
 /**
  * Handles requests for the application home page.
@@ -48,6 +48,8 @@ public class BoardController {
 	BoardService boardService;
 	@Autowired
 	PageMakerService pageMakerService;
+	@Autowired
+	BoardDAO boardDao;
 	@Resource
 	private String uploadPath;
 	
@@ -82,7 +84,7 @@ public class BoardController {
 		boardService.updateViews(num);
 		BoardVO bVo = boardService.getBoard(num);
 		ArrayList<FileVO> files = boardService.getFiles(num);
-		ArrayList<ReplyVO> reply = boardService.getReply(num);
+		ArrayList<ReplyVO> reply = boardService.getReplyList(num);
 		
 		mv.addObject("board", bVo);
 		mv.addObject("files", files);
@@ -101,7 +103,7 @@ public class BoardController {
 		logger.info("댓글달기 성공");
 		BoardVO bVo = boardService.getBoard(num);
 		ArrayList<FileVO> files = boardService.getFiles(num);
-		ArrayList<ReplyVO> reply = boardService.getReply(num);
+		ArrayList<ReplyVO> reply = boardService.getReplyList(num);
 		
 		mv.addObject("board", bVo);
 		mv.addObject("files", files);
@@ -111,21 +113,20 @@ public class BoardController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/display/updateRecommend", method = RequestMethod.POST)
+	@RequestMapping(value = "/reply", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<Object, Object> updateRecommendPost(Integer replyNum,Integer num) {
+	public Map<Object, Object> replyPost(Integer replyNum,Integer num) {
 		Map<Object, Object> map = new HashMap<Object, Object>();
-		System.out.println(num);
-		System.out.println(replyNum);
+		
 		boardService.updateRecommend(replyNum);
 		BoardVO bVo = boardService.getBoard(num);
 		ArrayList<FileVO> files = boardService.getFiles(num);
-		ArrayList<ReplyVO> reply = boardService.getReply(num);
+		ReplyVO reply = boardDao.getReply(replyNum);
  
 		map.put("board", bVo);
 		map.put("files", files);
 		map.put("reply", reply);
-		System.out.println(reply);
+		
 		return map;
 	}
 	

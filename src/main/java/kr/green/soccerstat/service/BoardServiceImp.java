@@ -125,19 +125,18 @@ public class BoardServiceImp implements BoardService{
 	}
 
 	@Override
-	public ArrayList<ReplyVO> getReply(Integer num) {
+	public ArrayList<ReplyVO> getReplyList(Integer num) {
 		
 		return boardDao.getReplyList(num);
 	}
 
 	@Override
 	public void updateRecommend(Integer replyNum) {
+		
 		ReplyVO tmp = boardDao.getReply(replyNum);
-		System.out.println(tmp);
 		if(tmp != null) {
 			int oldRecommend = tmp.getRecommend();
 			tmp.setRecommend(oldRecommend+1);
-			System.out.println(tmp.getRecommend());
 			boardDao.updateRecommend(tmp);
 			
 		}

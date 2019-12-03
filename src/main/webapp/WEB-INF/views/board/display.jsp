@@ -13,31 +13,7 @@
 <head>
 <title>상세 페이지</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/display.css">
-<script type="text/javascript">
-$(document).ready(function () {
-	$('.submit').click(function () {
-		location.href = '<%=request.getContextPath()%>/display?'+$('input[name=board_num]').val();
-	})
-	$('.recommend').click(function () {
-		var num = $('.btn').val();
-		var replyNum = $(this).siblings('input[name=replyNum]').val();
-		$.ajax({
-			type:'POST',
-			data:{'replyNum' : replyNum, 'num' : num},
-			url:"display/updateRecommend",
-			success : function (data){
-				for(var i = 0; i < data.reply.length; i++){
-					var str = '추천 : ' + data.reply[i].recommend;
-					$('.cnt:nth-child('+(i+1)+')').html(str);
-				}
-			},
-			error:function(request,status,error){
-	            console.log( request.responseText ); // 실패 시 처리
-			}
-		});
-	});
-});
-</script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/display.js"></script>
 </head>
 <body>
 	<div class="top">
@@ -49,7 +25,7 @@ $(document).ready(function () {
 		<div class="mid-top">
 			<div class="title">${board.title}</div>
 			<div class="info">
-				<ul>
+				<ul class="userinfo">
 					<li>${board.writer}</li>
 					<li>${board.id}</li>
 					<li>${board.registered}</li>
@@ -74,29 +50,32 @@ $(document).ready(function () {
 	</div>
 	<div class="bottom">
 		<div class="comment">
-			<div class="comment-top">
-				<c:forEach var="tmp" items="${reply}">
+			<c:forEach var="tmp" items="${reply}">
+				<div class="comment-top">
 					<ul class="userinfo" >
 						<li>${tmp.writer}</li>
 						<li>${tmp.id}</li>
-						<li class="float-r" style="padding-top: 2px;"><button class="btn cnt" value="${board.num}">추천 : ${tmp.recommend}</button></li>
+						<li class="float-r" style="padding-top: 2px;"><button class="btn" value="${board.num}">추천 : ${tmp.recommend}</button></li>
 						<li class="float-r">${tmp.registered}</li>
 					</ul>
 					<div class="comment-mid">
 						<div class="comment-txt">${tmp.content}</div>
 					</div>
 					<div class="comment-bottom">
-						<button>댓글의 답글달기</button>
 						<button class="float-r recommend">추천</button>
 						<input type="hidden" value="${tmp.num}" name="replyNum">
 					</div>
-				</c:forEach>
-			</div>
+				</div>
+			</c:forEach>
 		</div>
 		<div class="reply">
 			<form action="<%=request.getContextPath()%>/display" method="post">
 				<div>댓글쓰기</div>
-				<input type="text" placeholder="댓글을 작성하시려면 로그인 하세요" name="content">
+				<c:if test="${user eq null}">
+					<a href="<%=request.getContextPath()%>/login">
+				</c:if>
+						<input type="text" placeholder="댓글을 작성하시려면 로그인 하세요" name="content">
+					</a>
 				<input type="hidden" value="${board.num}" name="num">
 				<input type="hidden" value="<%= sf.format(nowTime) %>" name="registered">
 				<button  class="submit" type="submit">확인</button>

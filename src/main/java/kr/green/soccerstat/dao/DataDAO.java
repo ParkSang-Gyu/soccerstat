@@ -23,6 +23,8 @@ public interface DataDAO {
 
 	ArrayList<PlayerVO> getPlayerStat(@Param("pVo")PlayerVO pVo, @Param("currentSeason")String currentSeason, @Param("league")String league);
 
+	ArrayList<ScheduleVO> getLeagueSchedule(@Param("year")Integer year, @Param("cDate")String cDate, @Param("league")String league);
+	
 	ArrayList<TeamTableVO> getSortLeague(@Param("ttvo")TeamTableVO ttvo, @Param("currentSeason")String currentSeason, @Param("league")String league, @Param("sortData")String sortData);
 
 	ArrayList<PlayerVO> getSortPlayer(@Param("pVo")PlayerVO pVo, @Param("currentSeason")String currentSeason, @Param("league")String league, @Param("sortP")String sortP);

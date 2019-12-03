@@ -91,7 +91,7 @@ $(document).ready(function() {
 		var cDate = month + "월" + " " + day + "일";
 		$.ajax({
 			type:'POST',
-			data:{'year' : year, 'cDate' : cDate},
+			data:{'year' : year, 'cDate' : cDate, 'league' : league},
 			url:"league/league",
 			success : function (data) {
 				if(data.schedules[0]!= null){

@@ -20,8 +20,6 @@ public interface BoardDAO {
 
 	void updateBoard(BoardVO tmp);
 
-	ArrayList<ReplyVO> getReplyList(Integer num);
-
 	void deleteBoard(Integer num);
 
 	int getTotalCount(Criteria cri);
@@ -44,6 +42,10 @@ public interface BoardDAO {
 
 	void updateRecommend(ReplyVO tmp);
 	
+	ArrayList<ReplyVO> getReplyList(Integer num);
+	
 	ReplyVO getReply(Integer replyNum);
+	
+	
 
 }

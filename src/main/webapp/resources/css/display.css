@@ -63,6 +63,9 @@
 	margin: 10px 10px 0 10px;
 	padding-bottom: 10px;
 }
+.comment-top:nth-child(1){
+	border-bottom: none;
+}
 .comment-top{
 	border-bottom: 1px solid #343a40; 
 }
@@ -71,7 +74,7 @@
 }
 .comment-bottom{
 	margin-top: 5px;
-	padding-bottom: 10px;
+	padding-bottom: 40px;
 }
 .comment-bottom button{
 	background-color: #dee2e6;
@@ -84,6 +87,11 @@
 	padding: 0;
 	font-weight: bold;
 }
+.recommend:after{
+	clear: both;
+	display: block;
+	content: "";
+}
 .reply{
 	margin: 10px 10px 0 10px;
 }
@@ -94,7 +102,7 @@
 	width: 195px;
 	height: 100px;
 }
-ul li{
+.userinfo li{
 	font-weight: bold;
 	display: inline-block;
 }

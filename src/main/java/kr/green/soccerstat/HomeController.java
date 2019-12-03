@@ -93,7 +93,7 @@ public class HomeController {
 		map.put("sortData", sortData);
 		map.put("league", league);
 		
-		ArrayList<ScheduleVO> schedules = dataService.getSchedule1(year, cDate);
+		ArrayList<ScheduleVO> schedules = dataService.getLeagueSchedule(year, cDate,league);
 		ArrayList<TeamTableVO> sortLeague = dataService.getSortLeague(ttvo, currentSeason, league, sortData);
 		
 		map.put("schedules", schedules);

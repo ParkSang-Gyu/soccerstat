@@ -20,6 +20,8 @@ public interface DataService {
 	ArrayList<TeamTableVO> getLeagueTable(TeamTableVO ttvo, String currentSeason, String league);
 
 	ArrayList<PlayerVO> getPlayerStat(PlayerVO pVo, String currentSeason, String league);
+	
+	ArrayList<ScheduleVO> getLeagueSchedule(Integer year, String cDate, String league);
 
 	ArrayList<TeamTableVO> getSortLeague(TeamTableVO ttvo, String currentSeason, String league, String sortData);
 

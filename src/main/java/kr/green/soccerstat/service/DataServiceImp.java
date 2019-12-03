@@ -32,7 +32,7 @@ public class DataServiceImp implements DataService{
 	@Override
 	public ArrayList<ScheduleVO> getSchedule1(Integer year, String cDate) {
 		
-		return dataDao.getSchedule1(year, cDate);
+		return dataDao.getSchedule1(year,cDate);
 	}
 
 	@Override
@@ -53,6 +53,12 @@ public class DataServiceImp implements DataService{
 		return dataDao.getPlayerStat(pVo,currentSeason,league);
 	}
 
+	@Override
+	public ArrayList<ScheduleVO> getLeagueSchedule(Integer year, String cDate, String league) {
+		
+		return dataDao.getLeagueSchedule(year,cDate,league);
+	}
+	
 	@Override
 	public ArrayList<TeamTableVO> getSortLeague(TeamTableVO ttvo, String currentSeason, String league,
 			String sortData) {
