@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.green.soccerstat.dao.MemberDAO;
 import kr.green.soccerstat.pagination.Criteria;
 import kr.green.soccerstat.pagination.PageMaker;
 import kr.green.soccerstat.service.BoardService;
@@ -27,6 +28,8 @@ public class AdminController {
 	@Autowired
 	MemberService memberService;
 	@Autowired
+	MemberDAO memberDao;
+	@Autowired
 	PageMakerService pageMakerService;
 	@Autowired
 	BoardService boardService;
@@ -42,9 +45,9 @@ public class AdminController {
 		
 		cri.setPerPageNum(10);
 		//리스트를 현재 페이지 정보를 기준으로 가져와야함
-		ArrayList<MemberVO> list = memberService.getAllMember(cri);
+		ArrayList<MemberVO> list = memberDao.getAllMember(cri);
 		//totalCount를 db에서 검색해서 가져와야함
-		int totalCount = memberService.getTotalCount();
+		int totalCount = memberDao.getTotalCount();
 		//jsp에서 페이지네이션 링크를 board/list가 아닌 admin/user/list로 수정해야함
 		
 		PageMaker pm = pageMakerService.getPageMaker(10, cri, totalCount);
@@ -57,7 +60,7 @@ public class AdminController {
 	@RequestMapping(value="/admin/user/update", method=RequestMethod.GET)
 	public String adminUserUpdateGet(Model model,Criteria cri,MemberVO mVo) {
 		
-		memberService.updateAuthority(mVo);
+		memberDao.updateAuthority(mVo);
 		model.addAttribute("page", cri.getPage());
 		return "redirect:/admin/user/list";
 	}

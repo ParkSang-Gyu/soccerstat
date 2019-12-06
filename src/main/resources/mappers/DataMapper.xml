@@ -25,10 +25,10 @@
 	    select date,time,status,league,home,score,away,homeG,awayG from schedule where year = #{year} and date = #{cDate} and league = #{league}
 	</select>
 	<select id="getSortLeague" resultType="kr.green.soccerstat.vo.TeamTableVO">
-	    select * from teamtable where season = #{currentSeason} and league = #{league} order by #{sortData} desc, points desc
+	    select * from teamtable where season = #{currentSeason} and league = #{league} order by ${sortData} desc, points desc
 	</select>
 	<select id="getSortPlayer" resultType="kr.green.soccerstat.vo.PlayerVO">
-	    select * from playerstat where season = #{currentSeason} and league = #{league} order by #{sortP} desc
+	    select * from playerstat where season = #{currentSeason} and league = #{league} order by ${sortP} desc
 	</select>
 	<select id="getTeamInfo" resultType="kr.green.soccerstat.vo.TeamInfoVO">
 	    select * from teaminfo where team = #{team}
@@ -40,7 +40,7 @@
 	    select * from playerstat where season = #{currentSeason} and team = #{team}
 	</select>
 	<select id="getSortStat" resultType="kr.green.soccerstat.vo.PlayerVO">
-	    select * from playerstat where season = #{currentSeason} and team = #{team}
+	    select * from playerstat where season = #{currentSeason} and team = #{team} order by ${sortData} desc 
 	</select>
 	<select id="getPlayerInfo" resultType="kr.green.soccerstat.vo.PlayerVO">
 	    select * from playerinfo where player = #{player}

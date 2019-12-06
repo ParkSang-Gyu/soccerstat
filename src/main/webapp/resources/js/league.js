@@ -17,7 +17,7 @@ $(document).ready(function() {
 		$.ajax({
 			type:'POST',
 			data:{'sortData' : sortData, 'league' : league},
-			url:"league/league",
+			url:"leagueSortT",
 			success : function (data) {
 				$('.leagueTable').find('tbody td:nth-child(1)').siblings().remove();
 				for(var i = 0; i < data.sortLeague.length; i++){
@@ -39,7 +39,7 @@ $(document).ready(function() {
 		$.ajax({
 			type:'POST',
 			data:{'sortP' : sortP, 'league' : league},
-			url:"league",
+			url:"leagueSortP",
 			success : function (data) {
 				$('.standing').find('tbody td:nth-child(1)').siblings().remove();
 				for(var i = 0; i < data.sortPlayer.length; i++){

@@ -15,7 +15,7 @@ var isCheck = false;
 $(document).ready(function(){
 	$('#confirm').click(function(){
 		var id = $('input[name=id]').val();
-		//id 유효성 검사
+		//id 중복 검사
 		$.ajax({
 	        async:true,
 	        type:'POST',

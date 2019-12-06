@@ -1,8 +1,5 @@
 package kr.green.soccerstat.service;
 
-import java.util.ArrayList;
-
-import kr.green.soccerstat.pagination.Criteria;
 import kr.green.soccerstat.vo.MemberVO;
 
 public interface MemberService {
@@ -16,13 +13,5 @@ public interface MemberService {
 	public boolean isMember(String id);
 	
 	public boolean isWriter(String writer);
-
-	public ArrayList<MemberVO> getAllMember(Criteria cri);
-
-	public int getTotalCount();
-
-	public void updateAuthority(MemberVO mVo);
-
-
 
 }

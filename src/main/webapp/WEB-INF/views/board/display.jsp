@@ -18,7 +18,14 @@
 <body>
 	<div class="top">
 		<div class="soccerBoard">축구 게시판</div>
-		<a class="float-r" href="<%=request.getContextPath()%>/register"><button>글쓰기</button></a>
+		<c:if test="${user eq null}">
+			<a class="float-r a-margin write" href="<%=request.getContextPath()%>/login">
+		</c:if>
+		<c:if test="${user ne null}">
+			<a class="float-r a-margin write" href="<%=request.getContextPath()%>/register">
+		</c:if>
+				<button>글쓰기</button>
+			</a>
 		<a class="float-r a-margin" href="<%=request.getContextPath()%>/list"><button>목록</button></a>
 	</div>
 	<div class="middle">
@@ -39,7 +46,14 @@
 		</div>
 	</div>
 	<div class="mid-bottom">
-		<a class="float-r a-margin" href="<%=request.getContextPath()%>/register"><button>글쓰기</button></a>
+		<c:if test="${user eq null}">
+			<a class="float-r a-margin write" href="<%=request.getContextPath()%>/login">
+		</c:if>
+		<c:if test="${user ne null}">
+			<a class="float-r a-margin write" href="<%=request.getContextPath()%>/register">
+		</c:if>
+				<button>글쓰기</button>
+			</a>
 		<a class="float-r a-margin" href="<%=request.getContextPath()%>/list"><button>목록</button></a>
 		<c:if test="${user.writer eq board.writer }">
 			<a class="float-r a-margin" href="<%=request.getContextPath()%>/modify?num=${board.num}"><button>수정</button></a>

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.green.soccerstat.service.DataService;
+import kr.green.soccerstat.dao.DataDAO;
 import kr.green.soccerstat.vo.PlayerVO;
 import kr.green.soccerstat.vo.ScheduleVO;
 import kr.green.soccerstat.vo.TeamInfoVO;
@@ -26,7 +26,7 @@ import kr.green.soccerstat.vo.TeamTableVO;
 public class HomeController {
 	
 	@Autowired
-	DataService dataService;
+	DataDAO dataDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -38,8 +38,8 @@ public class HomeController {
 		logger.info("메인화면 진입 성공");
 		currentSeason = "2019-20";
 		
-		ArrayList<ScheduleVO> schedule = dataService.getSchedule(sVo);
-	    ArrayList<TeamTableVO> table = dataService.getTable(ttvo,currentSeason);
+		ArrayList<ScheduleVO> schedule = dataDao.getSchedule(sVo);
+	    ArrayList<TeamTableVO> table = dataDao.getTable(ttvo,currentSeason);
 	    
 	    mv.addObject("schedule", schedule);
 	    mv.addObject("table", table);
@@ -57,7 +57,7 @@ public class HomeController {
 		map.put("year", year);
 		map.put("cDate", cDate);
  
-		ArrayList<ScheduleVO> schedules = dataService.getSchedule1(year, cDate);
+		ArrayList<ScheduleVO> schedules = dataDao.getSchedule1(year, cDate);
  
 		map.put("schedules", schedules);
  
@@ -68,9 +68,9 @@ public class HomeController {
 	public ModelAndView eplGet(ModelAndView mv, ScheduleVO sVo, String league, TeamTableVO ttvo, String currentSeason, PlayerVO pVo) throws Exception{
 		currentSeason = "2019-20";
 	  
-		ArrayList<ScheduleVO> allLeague = dataService.getAllLeague(sVo, league);
-		ArrayList<TeamTableVO> leagueTable = dataService.getLeagueTable(ttvo, currentSeason, league);
-		ArrayList<PlayerVO> playerStat = dataService.getPlayerStat(pVo, currentSeason, league);
+		ArrayList<ScheduleVO> allLeague = dataDao.getAllLeague(sVo, league);
+		ArrayList<TeamTableVO> leagueTable = dataDao.getLeagueTable(ttvo, currentSeason, league);
+		ArrayList<PlayerVO> playerStat = dataDao.getPlayerStat(pVo, currentSeason, league);
 		
 		mv.addObject("allLeague", allLeague);
 		mv.addObject("leagueTable",leagueTable);
@@ -84,34 +84,48 @@ public class HomeController {
 	
 	@RequestMapping(value = {"/league/league"}, method = RequestMethod.POST)
 	@ResponseBody
-	public Map<Object, Object> leaguePost(Integer year, String cDate, String sortData, TeamTableVO ttvo, String currentSeason, String league){
+	public Map<Object, Object> leagueSchedulePost(Integer year, String cDate, String sortData, String currentSeason, String league){
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		currentSeason = "2019-20";	
 		
 		map.put("year", year);
 		map.put("cDate", cDate);
+		map.put("league", league);
+		
+		ArrayList<ScheduleVO> schedules = dataDao.getLeagueSchedule(year, cDate,league);
+		
+		map.put("schedules", schedules);
+		System.out.println(schedules);
+		
+		return map;
+	}
+	
+	@RequestMapping(value = {"/leagueSortT"}, method = RequestMethod.POST)
+	@ResponseBody
+	public Map<Object, Object> leagueSortTPost(String sortData, TeamTableVO ttvo, String currentSeason, String league){
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		currentSeason = "2019-20";	
+		
 		map.put("sortData", sortData);
 		map.put("league", league);
 		
-		ArrayList<ScheduleVO> schedules = dataService.getLeagueSchedule(year, cDate,league);
-		ArrayList<TeamTableVO> sortLeague = dataService.getSortLeague(ttvo, currentSeason, league, sortData);
+		ArrayList<TeamTableVO> sortLeague = dataDao.getSortLeague(ttvo, currentSeason, league, sortData);
 		
-		map.put("schedules", schedules);
 		map.put("sortLeague", sortLeague);
 		
 		return map;
 	}
 	
-	@RequestMapping(value = {"/league"}, method = RequestMethod.POST)
+	@RequestMapping(value = {"/leagueSortP"}, method = RequestMethod.POST)
 	@ResponseBody
-	public Map<Object, Object> leaguePost(String currentSeason, String league, PlayerVO pVo, String sortP){
+	public Map<Object, Object> leagueSortPPost(String currentSeason, String league, PlayerVO pVo, String sortP){
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		currentSeason = "2019-20";	
 		
 		map.put("league", league);
 		map.put("sortP", sortP);
 		
-		ArrayList<PlayerVO> sortPlayer = dataService.getSortPlayer(pVo, currentSeason, league, sortP);
+		ArrayList<PlayerVO> sortPlayer = dataDao.getSortPlayer(pVo, currentSeason, league, sortP);
 		
 		map.put("sortPlayer", sortPlayer);
 		
@@ -132,9 +146,9 @@ public class HomeController {
 		
 		mv.addObject("team", team);
 		
-		TeamInfoVO teamInfo = dataService.getTeamInfo(team);
-		TeamTableVO teamStat = dataService.getTeamStat(team,currentSeason);
-		ArrayList<PlayerVO> squad = dataService.getSquad(pVo,team,currentSeason);
+		TeamInfoVO teamInfo = dataDao.getTeamInfo(team);
+		TeamTableVO teamStat = dataDao.getTeamStat(team,currentSeason);
+		ArrayList<PlayerVO> squad = dataDao.getSquad(pVo,team,currentSeason);
 		
 		mv.addObject("teamInfo", teamInfo);
 		mv.addObject("teamStat", teamStat);
@@ -153,7 +167,7 @@ public class HomeController {
 		map.put("sortData", sortData);
 		map.put("team", team);
 		
-		ArrayList<PlayerVO> sortStat = dataService.getSortStat(sortData,team,currentSeason);
+		ArrayList<PlayerVO> sortStat = dataDao.getSortStat(sortData,team,currentSeason);
 		
 		map.put("sortStat", sortStat);
 		
@@ -166,9 +180,9 @@ public class HomeController {
 		
 		mv.addObject("player", player);
 		
-		PlayerVO playerInfo = dataService.getPlayerInfo(player);
-		PlayerVO nowStat = dataService.getNowStat(player,currentSeason);
-		ArrayList<PlayerVO> totalStat = dataService.getTotalStat(pVo,player);
+		PlayerVO playerInfo = dataDao.getPlayerInfo(player);
+		PlayerVO nowStat = dataDao.getNowStat(player,currentSeason);
+		ArrayList<PlayerVO> totalStat = dataDao.getTotalStat(pVo,player);
 		
 		mv.addObject("playerInfo", playerInfo);
 		mv.addObject("nowStat", nowStat);
@@ -185,7 +199,7 @@ public class HomeController {
 		
 		map.put("player", player);
 		
-		ArrayList<PlayerVO> sum = dataService.getSum(pVo,player);
+		ArrayList<PlayerVO> sum = dataDao.getSum(pVo,player);
 		
 		map.put("sum", sum);
 		
@@ -211,10 +225,10 @@ public class HomeController {
 		map.put("team", team);
 		map.put("playerName", playerName);
 		
-		ArrayList<String> seasonList = dataService.getSeasonList(league);
-		ArrayList<String> teamList = dataService.getTeamList(season,league);
-		ArrayList<String> playerList = dataService.getPlayerList(team,season,league);
-		ArrayList<PlayerVO> compareStat = dataService.getCompareStat(pVo,season,playerName);
+		ArrayList<String> seasonList = dataDao.getSeasonList(league);
+		ArrayList<String> teamList = dataDao.getTeamList(season,league);
+		ArrayList<String> playerList = dataDao.getPlayerList(team,season,league);
+		ArrayList<PlayerVO> compareStat = dataDao.getCompareStat(pVo,season,playerName);
 		
 		map.put("seasonList", seasonList);
 		map.put("teamList", teamList);

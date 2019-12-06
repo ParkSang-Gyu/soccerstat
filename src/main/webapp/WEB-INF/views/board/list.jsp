@@ -11,7 +11,14 @@
 <body>
 	<div class="top">
 		<div>축구 게시판</div>
-		<a class="write" href="<%=request.getContextPath()%>/register"><button>글쓰기</button></a>
+		<c:if test="${user ne null}">
+			<a class="write" href="<%=request.getContextPath()%>/register">
+		</c:if>
+		<c:if test="${user eq null}">
+			<a class="write" href="<%=request.getContextPath()%>/login">
+		</c:if>
+				<button>글쓰기</button>
+			</a>
 	</div>
 	<div class="middle">
 		<table class="table table-hover">
