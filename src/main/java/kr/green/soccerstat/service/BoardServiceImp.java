@@ -1,16 +1,12 @@
 package kr.green.soccerstat.service;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.green.soccerstat.dao.BoardDAO;
-import kr.green.soccerstat.pagination.Criteria;
 import kr.green.soccerstat.vo.BoardVO;
-import kr.green.soccerstat.vo.FileVO;
 import kr.green.soccerstat.vo.MemberVO;
 import kr.green.soccerstat.vo.ReplyVO;
 
@@ -20,12 +16,6 @@ public class BoardServiceImp implements BoardService{
 	@Autowired
 	BoardDAO boardDao;
 	
-	@Override
-	public ArrayList<BoardVO> getBoardList(Criteria cri) {
-		
-		return boardDao.getBoardList(cri);
-	}
-
 	@Override
 	public BoardVO getBoard(Integer num) {
 		
@@ -83,51 +73,9 @@ public class BoardServiceImp implements BoardService{
 	}
 
 	@Override
-	public int getTotalCount(Criteria cri) {
-		
-		return boardDao.getTotalCount(cri);
-	}
-
-	@Override
-	public ArrayList<BoardVO> getBoardListAll(Criteria cri) {
-		
-		return boardDao.getBoardListAll(cri);
-	}
-
-	@Override
-	public int getTotalCountAll(Criteria cri) {
-		
-		return boardDao.getTotalCountAll(cri);
-	}
-
-	@Override
-	public void updateValid(BoardVO bVo) {
-		
-		boardDao.updateValid(bVo);		
-	}
-
-	@Override
 	public void addFile(String file, int num) {
 		
 		boardDao.insertFile(file,num);
-	}
-
-	@Override
-	public ArrayList<FileVO> getFiles(Integer num) {
-		
-		return boardDao.selectFileList(num);
-	}
-
-	@Override
-	public void insertReply(Integer num, ReplyVO rVo, MemberVO mVo) {
-		
-		boardDao.insertReply(num,rVo,mVo);	
-	}
-
-	@Override
-	public ArrayList<ReplyVO> getReplyList(Integer num) {
-		
-		return boardDao.getReplyList(num);
 	}
 
 	@Override

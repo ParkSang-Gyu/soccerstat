@@ -64,8 +64,8 @@ public class BoardController {
 		}
 		
 		cri.setPerPageNum(10);
-		ArrayList<BoardVO> boardList = boardService.getBoardList(cri);
-		int totalCount = boardService.getTotalCount(cri);
+		ArrayList<BoardVO> boardList = boardDao.getBoardList(cri);
+		int totalCount = boardDao.getTotalCount(cri);
 		
 		PageMaker pm = pageMakerService.getPageMaker(5, cri, totalCount);
 		
@@ -83,8 +83,8 @@ public class BoardController {
 		//조회수 증가
 		boardService.updateViews(num);
 		BoardVO bVo = boardService.getBoard(num);
-		ArrayList<FileVO> files = boardService.getFiles(num);
-		ArrayList<ReplyVO> reply = boardService.getReplyList(num);
+		ArrayList<FileVO> files = boardDao.getFiles(num);
+		ArrayList<ReplyVO> reply = boardDao.getReplyList(num);
 		
 		mv.addObject("board", bVo);
 		mv.addObject("files", files);
@@ -99,11 +99,11 @@ public class BoardController {
 		
 		HttpSession session = request.getSession();
 		MemberVO mVo = (MemberVO)session.getAttribute("user");
-		boardService.insertReply(num,rVo,mVo);
+		boardDao.insertReply(num,rVo,mVo);
 		logger.info("댓글달기 성공");
 		BoardVO bVo = boardService.getBoard(num);
-		ArrayList<FileVO> files = boardService.getFiles(num);
-		ArrayList<ReplyVO> reply = boardService.getReplyList(num);
+		ArrayList<FileVO> files = boardDao.getFiles(num);
+		ArrayList<ReplyVO> reply = boardDao.getReplyList(num);
 		
 		mv.addObject("board", bVo);
 		mv.addObject("files", files);
@@ -120,7 +120,7 @@ public class BoardController {
 		
 		boardService.updateRecommend(replyNum);
 		BoardVO bVo = boardService.getBoard(num);
-		ArrayList<FileVO> files = boardService.getFiles(num);
+		ArrayList<FileVO> files = boardDao.getFiles(num);
 		ReplyVO reply = boardDao.getReply(replyNum);
  
 		map.put("board", bVo);
@@ -191,12 +191,12 @@ public class BoardController {
 		System.out.println(boardVo);
 		boardVo.getContent().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
 		int num = boardService.registerBoard(boardVo);
-		//for(MultipartFile tmp : file2) { 
-		//	if(tmp.getOriginalFilename().length() != 0) { 
-		//		String file = UploadFileUtils.uploadFile( uploadPath,tmp.getOriginalFilename(), tmp.getBytes());; 
-		//		boardService.addFile(file,num);
-		//	} 
-		//}
+		for(MultipartFile tmp : file2) { 
+			if(tmp.getOriginalFilename().length() != 0) { 
+				String file = UploadFileUtils.uploadFile( uploadPath,tmp.getOriginalFilename(), tmp.getBytes());; 
+				boardService.addFile(file,num);
+			} 
+		}
 		
 		return "redirect:/list";
 	}

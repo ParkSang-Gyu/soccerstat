@@ -86,7 +86,7 @@
     <insert id="insertFile">
   		insert into file(board_num,name) values(#{num},#{file})
     </insert>
-    <select id="selectFileList" resultType="kr.green.soccerstat.vo.FileVO">
+    <select id="getFiles" resultType="kr.green.soccerstat.vo.FileVO">
   		select * from file where board = #{num}
     </select>
     <select id="getMaxBoardNum" resultType="int">

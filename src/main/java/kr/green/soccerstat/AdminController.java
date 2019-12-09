@@ -10,10 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.green.soccerstat.dao.BoardDAO;
 import kr.green.soccerstat.dao.MemberDAO;
 import kr.green.soccerstat.pagination.Criteria;
 import kr.green.soccerstat.pagination.PageMaker;
-import kr.green.soccerstat.service.BoardService;
 import kr.green.soccerstat.service.MemberService;
 import kr.green.soccerstat.service.PageMakerService;
 import kr.green.soccerstat.vo.BoardVO;
@@ -32,7 +32,7 @@ public class AdminController {
 	@Autowired
 	PageMakerService pageMakerService;
 	@Autowired
-	BoardService boardService;
+	BoardDAO boardDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	
@@ -69,8 +69,8 @@ public class AdminController {
 	public String adminBoardListGet(Model model,Criteria cri) {
 		
 		logger.info("게시판 관리 화면");
-		ArrayList<BoardVO> boardList = boardService.getBoardListAll(cri);
-		int totalCount = boardService.getTotalCountAll(cri);
+		ArrayList<BoardVO> boardList = boardDao.getBoardListAll(cri);
+		int totalCount = boardDao.getTotalCountAll(cri);
 		
 		PageMaker pm = pageMakerService.getPageMaker(10, cri, totalCount);
 		
@@ -83,7 +83,7 @@ public class AdminController {
 	@RequestMapping(value="/admin/board/update", method=RequestMethod.GET)
 	public String adminBoardUpdateGet(Model model,Criteria cri,BoardVO bVo) {
 		
-		boardService.updateValid(bVo);
+		boardDao.updateValid(bVo);
 		model.addAttribute("page", cri.getPage());
 		return "redirect:/admin/board/list";
 	}

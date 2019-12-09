@@ -32,7 +32,7 @@ public interface BoardDAO {
 
 	void insertFile(@Param("file")String file, @Param("num")int num);
 
-	ArrayList<FileVO> selectFileList(Integer num);
+	ArrayList<FileVO> getFiles(Integer num);
 
 	int getMaxBoardNum();
 
