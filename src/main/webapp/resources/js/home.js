@@ -56,7 +56,7 @@ $(document).ready(function() {
 								+'<td>'+data.schedules[i+1].league+'</td><td class="home'+(i+1)+'"><a href="<%=request.getContextPath()%>/team?team='
 								+data.schedules[i+1].home+'">'+data.schedules[i+1].home+'</td><td>'+data.schedules[i+1].score+'</td>'
 								+'<td class="away'+(i+1)+'"><a href="<%=request.getContextPath()%>/team?team='+data.schedules[i+1].away+'">'
-								+data.schedules[i+1].away+'</td><td>경기장</td></tr>';
+								+data.schedules[i+1].away+'</td><td>'+data.schedules[i+1].stadium+'</td></tr>';
 					};
 					$('.fixture').find('tbody').html(str);
 					$('td').addClass('borderbtm');

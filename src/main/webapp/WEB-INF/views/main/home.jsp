@@ -60,7 +60,7 @@
 					        <td><a href="<%=request.getContextPath()%>/team?team=${tmp.home}">${tmp.home}</a></td>
 					        <td>${tmp.score}</td>
 					        <td><a href="<%=request.getContextPath()%>/team?team=${tmp.away}">${tmp.away}</a></td>
-					        <td>경기장</td>
+					        <td>${tmp.stadium}</td>
 				      	</tr>
 			      	</c:forEach>
 			    </tbody>

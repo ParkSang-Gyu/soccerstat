@@ -15,6 +15,8 @@ public class ScheduleVO {
 	private String away;
 	private int homeG;
 	private int awayG;
+	private String stadium;
+	
 	public int getScheduleNo() {
 		return scheduleNo;
 	}
@@ -93,12 +95,21 @@ public class ScheduleVO {
 	public void setAwayG(int awayG) {
 		this.awayG = awayG;
 	}
+	public String getStadium() {
+		return stadium;
+	}
+	public void setStadium(String stadium) {
+		this.stadium = stadium;
+	}
+	
 	@Override
 	public String toString() {
 		return "ScheduleVO [scheduleNo=" + scheduleNo + ", league=" + league + ", season=" + season + ", round=" + round
 				+ ", year=" + year + ", date=" + date + ", time=" + time + ", status=" + status + ", home=" + home
-				+ ", score=" + score + ", away=" + away + ", homeG=" + homeG + ", awayG=" + awayG + "]";
+				+ ", score=" + score + ", away=" + away + ", homeG=" + homeG + ", awayG=" + awayG + ", stadium="
+				+ stadium + "]";
 	}
+	
 	
 	
 }
